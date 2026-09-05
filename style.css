@@ -110,6 +110,27 @@ footer {
     .contenedor-layout {
         grid-template-columns: 1fr; 
     }
+    .redes-sociales {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.redes-sociales a {
+  color: var(--color-blanco);
+  font-size: 1.5rem;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.redes-sociales a:hover {
+  transform: translateY(-3px);
+}
+
+.redes-sociales a[aria-label="WhatsApp"]:hover { color: #25d366; }
+.redes-sociales a[aria-label="Facebook"]:hover { color: #1877f2; }
+.redes-sociales a[aria-label="Instagram"]:hover { color: #e4405f; }
+.redes-sociales a[aria-label="X / Twitter"]:hover { color: #1da1f2; }
 
     aside nav ul {
         flex-direction: row;
