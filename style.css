@@ -1,6 +1,4 @@
-/* ==========================================
-   ESTILOS GLOBALES Y VARIABLES
-   ========================================== */
+
 :root {
   --color-primario: #0f2a4a;
   --color-secundario: #1a4a7a;
@@ -22,12 +20,9 @@ body {
   font-family: var(--fuente-principal);
   background-color: var(--color-fondo);
   color: var(--color-texto);
-  scroll-behavior: smooth; /* Efecto suave al hacer clic en el menú */
+  scroll-behavior: smooth; 
 }
 
-/* ==========================================
-   AJUSTES ESPECÍFICOS DEL PORTAL
-   ========================================== */
 .sidebar-custom {
   width: 260px;
   background-color: var(--color-primario);
@@ -39,7 +34,7 @@ body {
   width: 100%;
 }
 
-/* Media query para que el sidebar empuje el contenido en PC */
+
 @media (min-width: 768px) {
   .main-content {
     margin-left: 260px;
@@ -76,14 +71,10 @@ body {
   background-color: var(--color-blanco);
 }
 
-/* Bordes de colores para algunas tarjetas */
 .border-materia-1 { border-left: 5px solid #1a5fb4 !important; }
 .border-materia-2 { border-left: 5px solid #27ae60 !important; }
 .border-materia-3 { border-left: 5px solid #f39c12 !important; }
 
-/* ==========================================
-   ANIMACIÓN REDES SOCIALES (FOOTER)
-   ========================================== */
 .redes-sociales {
   list-style: none;
   display: flex;
@@ -167,7 +158,7 @@ body {
 
 .redes-sociales .icon-content a[data-social="facebook"] .filled,
 .redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip {
-  background-color: #1877F2; /* Color oficial actualizado de Facebook */
+  background-color: #1877F2; 
 }
 
 .redes-sociales .icon-content a[data-social="instagram"] .filled,
