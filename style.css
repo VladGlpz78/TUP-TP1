@@ -1,3 +1,6 @@
+/* ==========================================================================
+   CÓDIGO ANTERIOR DEL TP 2 (CONSERVADO / COMENTADO PARA EVALUACIÓN)
+   ==========================================================================
 
 :root {
   --color-primario: #0f2a4a;
@@ -33,7 +36,6 @@ body {
 .main-content {
   width: 100%;
 }
-
 
 @media (min-width: 768px) {
   .main-content {
@@ -74,15 +76,50 @@ body {
 .border-materia-1 { border-left: 5px solid #1a5fb4 !important; }
 .border-materia-2 { border-left: 5px solid #27ae60 !important; }
 .border-materia-3 { border-left: 5px solid #f39c12 !important; }
+========================================================================== */
 
-.redes-sociales {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+/* ==========================================================================
+   TP 3 - REFACTORIZACIÓN BOOTSTRAP (SOLO ESTILOS PERSONALIZADOS INDISPENSABLES)
+   ========================================================================== */
+
+:root {
+  --color-primario: #0f2a4a;
+  --color-secundario: #1a4a7a;
 }
 
+/* Colores institucionales y estructura fija no resueltos por utilidades nativas */
+.sidebar-custom {
+  width: 260px;
+  background-color: var(--color-primario);
+  min-height: 100vh;
+  z-index: 1030;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+  }
+}
+
+.topbar-custom {
+  background-color: var(--color-primario);
+}
+
+.user-box {
+  background-color: #12365f;
+}
+
+.nav-link-custom:hover, 
+.nav-link-custom.active {
+  background-color: var(--color-secundario);
+}
+
+.border-materia-1 { border-left: 5px solid #1a5fb4 !important; }
+.border-materia-2 { border-left: 5px solid #27ae60 !important; }
+.border-materia-3 { border-left: 5px solid #f39c12 !important; }
+
+/* Animación compleja y tooltips de redes sociales (Footer) */
 .redes-sociales .icon-content {
   position: relative;
 }
@@ -137,7 +174,6 @@ body {
 
 .redes-sociales .icon-content a .filled {
   position: absolute;
-  top: auto;
   bottom: 0;
   left: 0;
   width: 100%;
@@ -150,16 +186,11 @@ body {
   height: 100%;
 }
 
-/* Colores específicos de cada red social */
 .redes-sociales .icon-content a[data-social="whatsapp"] .filled,
-.redes-sociales .icon-content a[data-social="whatsapp"] ~ .tooltip {
-  background-color: #25D366; /* Color oficial actualizado de WhatsApp */
-}
+.redes-sociales .icon-content a[data-social="whatsapp"] ~ .tooltip { background-color: #25D366; }
 
 .redes-sociales .icon-content a[data-social="facebook"] .filled,
-.redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip {
-  background-color: #1877F2; 
-}
+.redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip { background-color: #1877F2; }
 
 .redes-sociales .icon-content a[data-social="instagram"] .filled,
 .redes-sociales .icon-content a[data-social="instagram"] ~ .tooltip {
@@ -167,6 +198,4 @@ body {
 }
 
 .redes-sociales .icon-content a[data-social="twitter"] .filled,
-.redes-sociales .icon-content a[data-social="twitter"] ~ .tooltip {
-  background-color: #000000;
-}
+.redes-sociales .icon-content a[data-social="twitter"] ~ .tooltip { background-color: #000000; }
