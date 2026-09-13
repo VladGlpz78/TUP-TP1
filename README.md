@@ -13,6 +13,7 @@ Este proyecto consiste en el desarrollo de un sitio web de un portal academico c
 
 * HTML5
 * CSS
+* Bootstrap 5
 * GitHub para control de versiones
 
 ## Estrategias SEO implementadas

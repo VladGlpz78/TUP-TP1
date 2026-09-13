@@ -1,7 +1,4 @@
-/* ==========================================================================
-   CÓDIGO ANTERIOR DEL TP 2 (CONSERVADO / COMENTADO PARA EVALUACIÓN)
-   ==========================================================================
-
+/* 
 :root {
   --color-primario: #0f2a4a;
   --color-secundario: #1a4a7a;
@@ -25,101 +22,8 @@ body {
   color: var(--color-texto);
   scroll-behavior: smooth; 
 }
+ */
 
-.sidebar-custom {
-  width: 260px;
-  background-color: var(--color-primario);
-  min-height: 100vh;
-  z-index: 1030;
-}
-
-.main-content {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .main-content {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-  }
-}
-
-.user-box {
-  background-color: #12365f;
-  border-radius: 10px;
-}
-
-.nav-link-custom {
-  color: var(--color-blanco);
-  border-radius: 8px;
-  transition: 0.2s;
-  padding: 10px 14px;
-}
-
-.nav-link-custom:hover, .nav-link-custom.active {
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
-}
-
-.topbar-custom {
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
-}
-
-.card-custom {
-  border: none;
-  border-radius: var(--borde-radio);
-  box-shadow: var(--sombra-tarjeta);
-  background-color: var(--color-blanco);
-}
-
-.border-materia-1 { border-left: 5px solid #1a5fb4 !important; }
-.border-materia-2 { border-left: 5px solid #27ae60 !important; }
-.border-materia-3 { border-left: 5px solid #f39c12 !important; }
-========================================================================== */
-
-/* ==========================================================================
-   TP 3 - REFACTORIZACIÓN BOOTSTRAP (SOLO ESTILOS PERSONALIZADOS INDISPENSABLES)
-   ========================================================================== */
-
-:root {
-  --color-primario: #0f2a4a;
-  --color-secundario: #1a4a7a;
-}
-
-/* Colores institucionales y estructura fija no resueltos por utilidades nativas */
-.sidebar-custom {
-  width: 260px;
-  background-color: var(--color-primario);
-  min-height: 100vh;
-  z-index: 1030;
-}
-
-@media (min-width: 768px) {
-  .main-content {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-  }
-}
-
-.topbar-custom {
-  background-color: var(--color-primario);
-}
-
-.user-box {
-  background-color: #12365f;
-}
-
-.nav-link-custom:hover, 
-.nav-link-custom.active {
-  background-color: var(--color-secundario);
-}
-
-.border-materia-1 { border-left: 5px solid #1a5fb4 !important; }
-.border-materia-2 { border-left: 5px solid #27ae60 !important; }
-.border-materia-3 { border-left: 5px solid #f39c12 !important; }
-
-/* Animación compleja y tooltips de redes sociales (Footer) */
 .redes-sociales .icon-content {
   position: relative;
 }
