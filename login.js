@@ -32,7 +32,7 @@ formLogin.addEventListener('submit', function(evento) {
 
     if (usuario === "ramiro" && contrasena === "grupo4") {
         mensajeError.classList.add('d-none');
-        window.location.href = 'index.html';
+        window.location.href = 'portal.html';
     } else {
         mensajeError.textContent = "Usuario o contraseña incorrectos. Intentá con 'ramiro' y 'grupo4'.";
         mensajeError.classList.remove('d-none');
