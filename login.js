@@ -34,7 +34,7 @@ formLogin.addEventListener('submit', function(evento) {
         mensajeError.classList.add('d-none');
         window.location.href = 'portal.html';
     } else {
-        mensajeError.textContent = "Usuario o contraseña incorrectos. Intentá con 'ramiro' y 'grupo4'.";
+        mensajeError.textContent = "Usuario o contraseña incorrectos. Intentá con 'ramiro' y 'grupo8'.";
         mensajeError.classList.remove('d-none');
     }
 });
