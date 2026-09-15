@@ -2,14 +2,15 @@
 :root {
   --color-primario: #0f2a4a;
   --color-secundario: #1a4a7a;
-  --color-fondo: #f4f6f9;
+  /*--color-fondo: #f4f6f9;
   --color-texto: #333333;
   --color-blanco: #ffffff;
   --fuente-principal: 'Segoe UI', Tahoma, sans-serif;
   --sombra-tarjeta: 0 2px 8px rgba(0,0,0,.06);
   --borde-radio: 12px;
+  */
 }
-
+/*
 * {
   margin: 0;
   padding: 0;
@@ -150,11 +151,7 @@ body {
   height: 100%;
 }
 
-/* Colores específicos de cada red social */
-.redes-sociales .icon-content a[data-social="whatsapp"] .filled,
-.redes-sociales .icon-content a[data-social="whatsapp"] ~ .tooltip {
-  background-color: #25D366; /* Color oficial actualizado de WhatsApp */
-}
+
 
 .redes-sociales .icon-content a[data-social="facebook"] .filled,
 .redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip {
@@ -170,3 +167,5 @@ body {
 .redes-sociales .icon-content a[data-social="twitter"] ~ .tooltip {
   background-color: #000000;
 }
+
+
