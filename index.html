@@ -5,26 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portal Académico - Escuela Normal</title>
 
-    <!-- 1. Este es el link OBLIGATORIO de Bootstrap (si falta, pasa lo de tu imagen) -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
 
-    <!-- 2. FontAwesome para los íconos de las redes sociales -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
 
-    <!-- 3. Tu hoja de estilos externa -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="bg-light m-0 p-0">
-    <!-- CONTENEDOR GENERAL -->
     <div class="d-flex min-vh-100">
-      <!-- SIDEBAR -->
-      <!-- Corrección: Se cambió position-fixed por sticky-top vh-100 para evitar que tape el contenido -->
       <aside
         class="bg-dark text-white p-3 d-none d-md-flex flex-column sticky-top vh-100"
         style="width: 260px"
@@ -34,7 +28,6 @@
           Escuela Normal
         </div>
 
-        <!-- PERFIL -->
         <div
           class="bg-secondary bg-opacity-25 rounded-4 d-flex align-items-center gap-3 p-3 mb-4"
         >
@@ -51,43 +44,38 @@
           </div>
         </div>
 
-    <!-- NAVEGACIÓN (Sin fondos azules fijos) -->
-<nav class="nav flex-column gap-2 mb-auto">
-  
-  <a href="#inicio" class="nav-link text-white-600 px-3 py-2">
-    <i class="fa-solid fa-house me-2"></i> Inicio
-  </a>
+        <nav class="nav flex-column gap-2 mb-auto">
+          <a href="#inicio" class="nav-link text-white-600 px-3 py-2">
+            <i class="fa-solid fa-house me-2"></i> Inicio
+          </a>
 
-  <a href="#perfil" class="nav-link text-white-600 px-3 py-2">
-    <i class="fa-solid fa-user me-2"></i> Mi Perfil
-  </a>
+          <a href="#perfil" class="nav-link text-white-600 px-3 py-2">
+            <i class="fa-solid fa-user me-2"></i> Mi Perfil
+          </a>
 
-  <a href="#materias" class="nav-link text-white- 600px-3 py-2">
-    <i class="fa-solid fa-book me-2"></i> Materias
-  </a>
+          <a href="#materias" class="nav-link text-white- 600px-3 py-2">
+            <i class="fa-solid fa-book me-2"></i> Materias
+          </a>
 
-  <a href="#notas" class="nav-link text-white-600 px-3 py-2">
-    <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
-  </a>
+          <a href="#notas" class="nav-link text-white-600 px-3 py-2">
+            <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
+          </a>
 
-  <a href="#asistencias" class="nav-link text-white-600 px-3 py-2">
-    <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
-  </a>
+          <a href="#asistencias" class="nav-link text-white-600 px-3 py-2">
+            <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
+          </a>
 
-  <a href="#horarios" class="nav-link text-white-600 px-3 py-2">
-    <i class="fa-solid fa-clock me-2"></i> Horarios
-  </a>
-</nav>
+          <a href="#horarios" class="nav-link text-white-600 px-3 py-2">
+            <i class="fa-solid fa-clock me-2"></i> Horarios
+          </a>
+        </nav>
 
         <a href="#" class="nav-link text-danger px-3 py-2">
           <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar sesión
         </a>
       </aside>
 
-      <!-- CONTENIDO PRINCIPAL -->
-      <!-- Corrección: Se eliminaron los márgenes manuales porque flex-grow-1 ya hace el trabajo -->
       <main class="flex-grow-1 d-flex flex-column w-100">
-        <!-- HEADER -->
         <header
           class="bg-primary text-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top shadow"
         >
@@ -108,9 +96,7 @@
           </div>
         </header>
 
-        <!-- CONTENIDO -->
         <div class="p-3 p-md-4 flex-grow-1">
-          <!-- BIENVENIDA -->
           <section id="inicio" class="mb-5">
             <div class="card border-0 shadow rounded-4 p-4">
               <h2 class="h4 fw-bold mb-3 text-primary">
@@ -127,9 +113,7 @@
             </div>
           </section>
 
-          <!-- TARJETAS -->
           <div class="row g-4">
-            <!-- PERFIL -->
             <section id="perfil" class="col-12 col-md-6">
               <div
                 class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100"
@@ -143,7 +127,6 @@
               </div>
             </section>
 
-            <!-- MATERIAS -->
             <section id="materias" class="col-12 col-md-6">
               <div
                 class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100"
@@ -158,7 +141,6 @@
               </div>
             </section>
 
-            <!-- NOTAS -->
             <section id="notas" class="col-12 col-md-6">
               <div
                 class="card border-0 border-start border-success border-4 shadow rounded-4 p-4 h-100"
@@ -173,7 +155,6 @@
               </div>
             </section>
 
-            <!-- ASISTENCIAS -->
             <section id="asistencias" class="col-12 col-md-6">
               <div
                 class="card border-0 border-start border-warning border-4 shadow rounded-4 p-4 h-100"
@@ -187,7 +168,6 @@
               </div>
             </section>
 
-            <!-- HORARIOS -->
             <section id="horarios" class="col-12 col-md-6">
               <div class="card border-0 shadow rounded-4 p-4 h-100">
                 <h2 class="h5 fw-bold mb-2 text-primary">
@@ -201,9 +181,7 @@
           </div>
         </div>
 
-        <!-- FOOTER -->
         <footer class="mt-auto bg-dark text-white p-4 text-center mt-4">
-          <!-- CONTACTO -->
           <div
             class="d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mb-4 small"
           >
@@ -260,7 +238,6 @@
             </li>
           </ul>
 
-          <!-- COPYRIGHT -->
           <p class="mb-0 small text-white-50">
             &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8
             (Nicolas, Lucca, Abel, Ramiro).
@@ -269,7 +246,6 @@
       </main>
     </div>
 
-    <!-- Bootstrap JS -->
     <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)"></script>
     <script src="app.js"></script>
   </body>
