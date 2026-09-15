@@ -3,143 +3,274 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portal de gestión académica de la Escuela Normal. Consulta de notas, asistencias, horarios y pagos para alumnos y padres." />
-    <meta name="author" content="Escuela Normal" />
-    <meta name="keywords" content="Portal Académico, Escuela Normal, Gestión Académica, Notas, Asistencias, Horarios, Pagos" />
-    <meta name="robots" content="index, follow" />
-
     <title>Portal Académico - Escuela Normal</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- 1. Este es el link OBLIGATORIO de Bootstrap (si falta, pasa lo de tu imagen) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- 2. FontAwesome para los íconos de las redes sociales -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
+    <!-- 3. Tu hoja de estilos externa -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  
-  <body class="bg-light">
-    <div class="d-flex">
-      
-      <aside class="bg-dark text-white p-3 d-none d-md-flex flex-column position-fixed vh-100" style="width: 260px; z-index: 1030;">
-        <div class="d-flex align-items-center gap-2 mb-4 fw-bold fs-5 text-white">
-           Escuela Normal
+  <body class="bg-light m-0 p-0">
+    <!-- CONTENEDOR GENERAL -->
+    <div class="d-flex min-vh-100">
+      <!-- SIDEBAR -->
+      <!-- Corrección: Se cambió position-fixed por sticky-top vh-100 para evitar que tape el contenido -->
+      <aside
+        class="bg-dark text-white p-3 d-none d-md-flex flex-column sticky-top vh-100"
+        style="width: 260px"
+      >
+        <div class="d-flex align-items-center gap-2 mb-4 fw-bold fs-5">
+          <i class="fa-solid fa-school text-primary"></i>
+          Escuela Normal
         </div>
 
-        <div class="bg-secondary bg-opacity-25 rounded-3 d-flex align-items-center gap-3 p-2 mb-4">
-          <img src="https://i.pravatar.cc/100?img=12" alt="Foto de perfil del alumno" class="rounded-circle" width="40" height="40" />
+        <!-- PERFIL -->
+        <div
+          class="bg-secondary bg-opacity-25 rounded-4 d-flex align-items-center gap-3 p-3 mb-4"
+        >
+          <img
+            src="[https://i.pravatar.cc/100?img=12](https://i.pravatar.cc/100?img=12)"
+            alt="Foto de perfil del alumno"
+            class="rounded-circle"
+            width="45"
+            height="45"
+          />
           <div class="lh-sm">
-            <div class="fw-bold text-white">Ramiro</div>
-            <small class="text-white-50">Alumno Regular</small>
+            <div class="fw-bold">Ramiro</div>
+            <small class="text-white-50"> Alumno Regular </small>
           </div>
         </div>
 
-        <nav class="nav flex-column gap-2 mb-auto">
-          <a href="#inicio" class="nav-link bg-primary text-white rounded px-3 py-2">Inicio</a>
-          <a href="#perfil" class="nav-link text-white-50 px-3 py-2">Mi Perfil</a>
-          <a href="#materias" class="nav-link text-white-50 px-3 py-2"> Materias</a>
-          <a href="#notas" class="nav-link text-white-50 px-3 py-2">Notas y Libreta</a>
-          <a href="#asistencias" class="nav-link text-white-50 px-3 py-2"> Asistencias</a>
-          <a href="#horarios" class="nav-link text-white-50 px-3 py-2"> Horarios</a>
-        </nav>
-        <a href="#" class="nav-link text-danger mt-3 px-3 py-2"> Cerrar sesión</a>
+    <!-- NAVEGACIÓN (Sin fondos azules fijos) -->
+<nav class="nav flex-column gap-2 mb-auto">
+  
+  <a href="#inicio" class="nav-link text-white-600 px-3 py-2">
+    <i class="fa-solid fa-house me-2"></i> Inicio
+  </a>
+
+  <a href="#perfil" class="nav-link text-white-600 px-3 py-2">
+    <i class="fa-solid fa-user me-2"></i> Mi Perfil
+  </a>
+
+  <a href="#materias" class="nav-link text-white- 600px-3 py-2">
+    <i class="fa-solid fa-book me-2"></i> Materias
+  </a>
+
+  <a href="#notas" class="nav-link text-white-600 px-3 py-2">
+    <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
+  </a>
+
+  <a href="#asistencias" class="nav-link text-white-600 px-3 py-2">
+    <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
+  </a>
+
+  <a href="#horarios" class="nav-link text-white-600 px-3 py-2">
+    <i class="fa-solid fa-clock me-2"></i> Horarios
+  </a>
+</nav>
+
+        <a href="#" class="nav-link text-danger px-3 py-2">
+          <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar sesión
+        </a>
       </aside>
 
-      <main class="w-100 d-flex flex-column min-vh-100 ms-0 ms-md-auto" style="margin-left: 260px !important;">
-        
-        <header class="bg-primary text-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top shadow-sm">
-          <h1 class="h5 mb-0 fw-semibold">
-            Escuela Normal<br />
-            <small class="fw-normal text-white-50 fs-6">Portal interactivo para Alumnos y Padres</small>
-          </h1>
+      <!-- CONTENIDO PRINCIPAL -->
+      <!-- Corrección: Se eliminaron los márgenes manuales porque flex-grow-1 ya hace el trabajo -->
+      <main class="flex-grow-1 d-flex flex-column w-100">
+        <!-- HEADER -->
+        <header
+          class="bg-primary text-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top shadow"
+        >
+          <div>
+            <h1 class="h5 mb-0 fw-semibold">Escuela Normal</h1>
+            <small class="text-white-50"
+              >Portal interactivo para Alumnos y Padres</small
+            >
+          </div>
           <div class="d-flex align-items-center gap-3 fs-5">
-            <span>🔔</span>
-            <span class="bg-light text-primary rounded-circle px-2 py-1 fs-6 fw-bold">RA</span>
+            <span><i class="fa-solid fa-bell"></i></span>
+            <span
+              class="bg-light text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold"
+              style="width: 40px; height: 40px"
+            >
+              RA
+            </span>
           </div>
         </header>
 
-        <div class="p-4 flex-grow-1">
+        <!-- CONTENIDO -->
+        <div class="p-3 p-md-4 flex-grow-1">
+          <!-- BIENVENIDA -->
           <section id="inicio" class="mb-5">
-            <div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
-              <h2 class="h4 fw-bold mb-3 text-primary">Bienvenido a la Escuela Normal</h2>
+            <div class="card border-0 shadow rounded-4 p-4">
+              <h2 class="h4 fw-bold mb-3 text-primary">
+                Bienvenido a la Escuela Normal
+              </h2>
               <p class="text-secondary mb-0">
-                Este portal está diseñado para brindar a nuestra comunidad educativa un acceso rápido y transparente a toda la información académica y administrativa. Desde hace más de 50 años, la Escuela Normal se compromete con la excelencia educativa, y hoy damos un paso más hacia la innovación digital para mantenernos conectados.
+                Este portal está diseñado para brindar a nuestra comunidad
+                educativa un acceso rápido y transparente a toda la información
+                académica y administrativa. Desde hace más de 50 años, la
+                Escuela Normal se compromete con la excelencia educativa, y hoy
+                damos un paso más hacia la innovación digital para mantenernos
+                conectados.
               </p>
             </div>
           </section>
 
+          <!-- TARJETAS -->
           <div class="row g-4">
-            <section id="perfil" class="col-md-6">
-              <div class="card border-0 shadow-sm rounded-3 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold mb-2 text-primary">Perfil del Alumno</h2>
-                <p class="text-secondary small mb-0">Aquí irá la foto, nombre completo, curso y datos del tutor.</p>
+            <!-- PERFIL -->
+            <section id="perfil" class="col-12 col-md-6">
+              <div
+                class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100"
+              >
+                <h2 class="h5 fw-bold mb-2 text-primary">
+                  <i class="fa-solid fa-user me-2"></i> Perfil del Alumno
+                </h2>
+                <p class="text-secondary small mb-0">
+                  Aquí irá la foto, nombre completo, curso y datos del tutor.
+                </p>
               </div>
             </section>
 
-            <section id="materias" class="col-md-6">
-              <div class="card border-0 border-start border-primary border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold mb-2 text-primary">Materias en curso</h2>
-                <p class="text-secondary small mb-0">Listado de materias, profesores a cargo y programas de estudio.</p>
+            <!-- MATERIAS -->
+            <section id="materias" class="col-12 col-md-6">
+              <div
+                class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100"
+              >
+                <h2 class="h5 fw-bold mb-2 text-primary">
+                  <i class="fa-solid fa-book me-2"></i> Materias en curso
+                </h2>
+                <p class="text-secondary small mb-0">
+                  Listado de materias, profesores a cargo y programas de
+                  estudio.
+                </p>
               </div>
             </section>
 
-            <section id="notas" class="col-md-6">
-              <div class="card border-0 border-start border-success border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold mb-2 text-primary">Notas y Libreta</h2>
-                <p class="text-secondary small mb-0">Calificaciones divididas por trimestre y promedios generales.</p>
+            <!-- NOTAS -->
+            <section id="notas" class="col-12 col-md-6">
+              <div
+                class="card border-0 border-start border-success border-4 shadow rounded-4 p-4 h-100"
+              >
+                <h2 class="h5 fw-bold mb-2 text-success">
+                  <i class="fa-solid fa-graduation-cap me-2"></i> Notas y
+                  Libreta
+                </h2>
+                <p class="text-secondary small mb-0">
+                  Calificaciones divididas por trimestre y promedios generales.
+                </p>
               </div>
             </section>
 
-            <section id="asistencias" class="col-md-6">
-              <div class="card border-0 border-start border-warning border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold mb-2 text-primary">Asistencias</h2>
-                <p class="text-secondary small mb-0">Registro de faltas, tardanzas y justificaciones.</p>
+            <!-- ASISTENCIAS -->
+            <section id="asistencias" class="col-12 col-md-6">
+              <div
+                class="card border-0 border-start border-warning border-4 shadow rounded-4 p-4 h-100"
+              >
+                <h2 class="h5 fw-bold mb-2 text-warning">
+                  <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
+                </h2>
+                <p class="text-secondary small mb-0">
+                  Registro de faltas, tardanzas y justificaciones.
+                </p>
               </div>
             </section>
 
-            <section id="horarios" class="col-md-6">
-              <div class="card border-0 shadow-sm rounded-3 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold mb-2 text-primary">Horarios de Clase</h2>
-                <p class="text-secondary small mb-0">Grilla semanal con los horarios de cada materia y recreos.</p>
+            <!-- HORARIOS -->
+            <section id="horarios" class="col-12 col-md-6">
+              <div class="card border-0 shadow rounded-4 p-4 h-100">
+                <h2 class="h5 fw-bold mb-2 text-primary">
+                  <i class="fa-solid fa-clock me-2"></i> Horarios de Clase
+                </h2>
+                <p class="text-secondary small mb-0">
+                  Grilla semanal con los horarios de cada materia y recreos.
+                </p>
               </div>
             </section>
           </div>
         </div>
 
-        <footer class="mt-auto bg-dark text-white p-4 text-center">
-          <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 mb-4 small">
-            <a href="mailto:contacto@escuelanormal.edu.ar" class="text-decoration-none text-white-50">
-              <i class="fa-solid fa-envelope text-primary me-1"></i> <strong>Email:</strong> contacto@escuelanormal.edu.ar
+        <!-- FOOTER -->
+        <footer class="mt-auto bg-dark text-white p-4 text-center mt-4">
+          <!-- CONTACTO -->
+          <div
+            class="d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mb-4 small"
+          >
+            <a
+              href="mailto:contacto@escuelanormal.edu.ar"
+              class="text-decoration-none text-white-50"
+            >
+              <i class="fa-solid fa-envelope text-primary me-1"></i>
+              <strong>Email:</strong> contacto@escuelanormal.edu.ar
             </a>
-            <span class="text-white-50 d-none d-sm-inline">|</span>
-            <a href="tel:+543814509999" class="text-decoration-none text-white-50">
-              <i class="fa-solid fa-phone text-primary me-1"></i> <strong>Administración:</strong> (0381) 450-9999
+            <span class="d-none d-sm-inline text-white-50"> | </span>
+            <a
+              href="tel:+543814509999"
+              class="text-decoration-none text-white-50"
+            >
+              <i class="fa-solid fa-phone text-primary me-1"></i>
+              <strong>Administración:</strong> (0381) 450-9999
             </a>
           </div>
 
-          <ul class="d-flex justify-content-center align-items-center gap-4 mb-4 list-unstyled fs-4">
+          <!-- REDES -->
+          <ul
+            class="d-flex justify-content-center align-items-center gap-4 mb-4 list-unstyled fs-4"
+          >
             <li>
-              <a href="https://wa.me/5493810000000" target="_blank" class="text-white-50">
+              <a
+                href="[https://wa.me/5493810000000](https://wa.me/5493810000000)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white-50"
+              >
                 <i class="fa-brands fa-whatsapp"></i>
               </a>
             </li>
             <li>
-              <a href="https://facebook.com" target="_blank" class="text-white-50">
+              <a
+                href="[https://facebook.com](https://facebook.com)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white-50"
+              >
                 <i class="fa-brands fa-facebook"></i>
               </a>
             </li>
             <li>
-              <a href="https://instagram.com" target="_blank" class="text-white-50">
+              <a
+                href="[https://instagram.com](https://instagram.com)"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-white-50"
+              >
                 <i class="fa-brands fa-instagram"></i>
               </a>
             </li>
           </ul>
 
+          <!-- COPYRIGHT -->
           <p class="mb-0 small text-white-50">
-            &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8 (Nicolas, Lucca, Abel, Ramiro).
+            &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8
+            (Nicolas, Lucca, Abel, Ramiro).
           </p>
         </footer>
       </main>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="[https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js](https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js)"></script>
+    <script src="app.js"></script>
   </body>
 </html>

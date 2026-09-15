@@ -1,16 +1,15 @@
-
-:root {
+   /*:root {
   --color-primario: #0f2a4a;
   --color-secundario: #1a4a7a;
-  /*--color-fondo: #f4f6f9;
+ --color-fondo: #f4f6f9;
   --color-texto: #333333;
   --color-blanco: #ffffff;
   --fuente-principal: 'Segoe UI', Tahoma, sans-serif;
   --sombra-tarjeta: 0 2px 8px rgba(0,0,0,.06);
   --borde-radio: 12px;
-  */
+  
 }
-/*
+
 * {
   margin: 0;
   padding: 0;
@@ -157,15 +156,3 @@ body {
 .redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip {
   background-color: #1877F2; 
 }
-
-.redes-sociales .icon-content a[data-social="instagram"] .filled,
-.redes-sociales .icon-content a[data-social="instagram"] ~ .tooltip {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
-
-.redes-sociales .icon-content a[data-social="twitter"] .filled,
-.redes-sociales .icon-content a[data-social="twitter"] ~ .tooltip {
-  background-color: #000000;
-}
-
-
