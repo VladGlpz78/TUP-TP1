@@ -3,87 +3,143 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Inicio de sesión del Portal de gestión académica de la Escuela Normal."
-    />
-    <title>Iniciar sesión - Escuela Normal</title>
+    <meta name="description" content="Portal de gestión académica de la Escuela Normal. Consulta de notas, asistencias, horarios y pagos para alumnos y padres." />
+    <meta name="author" content="Escuela Normal" />
+    <meta name="keywords" content="Portal Académico, Escuela Normal, Gestión Académica, Notas, Asistencias, Horarios, Pagos" />
+    <meta name="robots" content="index, follow" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
+    <title>Portal Académico - Escuela Normal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   
   <body class="bg-light">
-    <div class="d-flex align-items-center justify-content-center min-vh-100 p-3">
+    <div class="d-flex">
       
-      <div class="card border-0 shadow-sm rounded-3 p-4 p-md-5 bg-white" style="max-width: 400px; width: 100%;">
-        
-        <div class="text-center mb-4">
-          <div class="fs-1 mb-2">🏛️</div>
-          <h1 class="h4 fw-bold mb-1 text-primary">Escuela Normal</h1>
-          <p class="text-secondary small mb-0">Portal académico para alumnos y padres</p>
+      <aside class="bg-dark text-white p-3 d-none d-md-flex flex-column position-fixed vh-100" style="width: 260px; z-index: 1030;">
+        <div class="d-flex align-items-center gap-2 mb-4 fw-bold fs-5 text-white">
+          🏛️ Escuela Normal
         </div>
-        <form id="login-form" novalidate>
-          <div class="mb-3">
-            <label for="usuario" class="form-label fw-semibold text-secondary">Usuario</label>
-            <input
-              type="text"
-              class="form-control"
-              id="usuario"
-              placeholder="Ingresá tu usuario"
-              autocomplete="username"
-            />
-          </div>
 
-          <div class="mb-3">
-            <label for="contrasena" class="form-label fw-semibold text-secondary">Contraseña</label>
-            <div class="input-group">
-              <input
-                type="password"
-                class="form-control"
-                id="contrasena"
-                placeholder="Ingresá tu contraseña"
-                autocomplete="current-password"
-              />
-              <button
-                class="btn btn-outline-secondary"
-                type="button"
-                id="toggle-password"
-                aria-label="Mostrar u ocultar contraseña"
-              >
-                <i class="fa-solid fa-eye"></i>
-              </button>
+        <div class="bg-secondary bg-opacity-25 rounded-3 d-flex align-items-center gap-3 p-2 mb-4">
+          <img src="https://i.pravatar.cc/100?img=12" alt="Foto de perfil del alumno" class="rounded-circle" width="40" height="40" />
+          <div class="lh-sm">
+            <div class="fw-bold text-white">Ramiro</div>
+            <small class="text-white-50">Alumno Regular</small>
+          </div>
+        </div>
+
+        <nav class="nav flex-column gap-2 mb-auto">
+          <a href="#inicio" class="nav-link bg-primary text-white rounded px-3 py-2">🏠 Inicio</a>
+          <a href="#perfil" class="nav-link text-white-50 px-3 py-2">👤 Mi Perfil</a>
+          <a href="#materias" class="nav-link text-white-50 px-3 py-2">📚 Materias</a>
+          <a href="#notas" class="nav-link text-white-50 px-3 py-2">📝 Notas y Libreta</a>
+          <a href="#asistencias" class="nav-link text-white-50 px-3 py-2">✋ Asistencias</a>
+          <a href="#horarios" class="nav-link text-white-50 px-3 py-2">⏰ Horarios</a>
+        </nav>
+        <a href="#" class="nav-link text-danger mt-3 px-3 py-2">🚪 Cerrar sesión</a>
+      </aside>
+
+      <main class="w-100 d-flex flex-column min-vh-100 ms-0 ms-md-auto" style="margin-left: 260px !important;">
+        
+        <header class="bg-primary text-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top shadow-sm">
+          <h1 class="h5 mb-0 fw-semibold">
+            Escuela Normal<br />
+            <small class="fw-normal text-white-50 fs-6">Portal interactivo para Alumnos y Padres</small>
+          </h1>
+          <div class="d-flex align-items-center gap-3 fs-5">
+            <span>🔔</span>
+            <span class="bg-light text-primary rounded-circle px-2 py-1 fs-6 fw-bold">RA</span>
+          </div>
+        </header>
+
+        <div class="p-4 flex-grow-1">
+          <section id="inicio" class="mb-5">
+            <div class="card border-0 shadow-sm rounded-3 p-4 bg-white">
+              <h2 class="h4 fw-bold mb-3 text-primary">Bienvenido a la Escuela Normal</h2>
+              <p class="text-secondary mb-0">
+                Este portal está diseñado para brindar a nuestra comunidad educativa un acceso rápido y transparente a toda la información académica y administrativa. Desde hace más de 50 años, la Escuela Normal se compromete con la excelencia educativa, y hoy damos un paso más hacia la innovación digital para mantenernos conectados.
+              </p>
             </div>
+          </section>
+
+          <div class="row g-4">
+            <section id="perfil" class="col-md-6">
+              <div class="card border-0 shadow-sm rounded-3 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold mb-2 text-primary">Perfil del Alumno</h2>
+                <p class="text-secondary small mb-0">Aquí irá la foto, nombre completo, curso y datos del tutor.</p>
+              </div>
+            </section>
+
+            <section id="materias" class="col-md-6">
+              <div class="card border-0 border-start border-primary border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold mb-2 text-primary">Materias en curso</h2>
+                <p class="text-secondary small mb-0">Listado de materias, profesores a cargo y programas de estudio.</p>
+              </div>
+            </section>
+
+            <section id="notas" class="col-md-6">
+              <div class="card border-0 border-start border-success border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold mb-2 text-primary">Notas y Libreta</h2>
+                <p class="text-secondary small mb-0">Calificaciones divididas por trimestre y promedios generales.</p>
+              </div>
+            </section>
+
+            <section id="asistencias" class="col-md-6">
+              <div class="card border-0 border-start border-warning border-4 shadow-sm rounded-3 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold mb-2 text-primary">Asistencias</h2>
+                <p class="text-secondary small mb-0">Registro de faltas, tardanzas y justificaciones.</p>
+              </div>
+            </section>
+
+            <section id="horarios" class="col-md-6">
+              <div class="card border-0 shadow-sm rounded-3 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold mb-2 text-primary">Horarios de Clase</h2>
+                <p class="text-secondary small mb-0">Grilla semanal con los horarios de cada materia y recreos.</p>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <footer class="mt-auto bg-dark text-white p-4 text-center">
+          <div class="d-flex flex-wrap justify-content-center align-items-center gap-4 mb-4 small">
+            <a href="mailto:contacto@escuelanormal.edu.ar" class="text-decoration-none text-white-50">
+              <i class="fa-solid fa-envelope text-primary me-1"></i> <strong>Email:</strong> contacto@escuelanormal.edu.ar
+            </a>
+            <span class="text-white-50 d-none d-sm-inline">|</span>
+            <a href="tel:+543814509999" class="text-decoration-none text-white-50">
+              <i class="fa-solid fa-phone text-primary me-1"></i> <strong>Administración:</strong> (0381) 450-9999
+            </a>
           </div>
 
-          <div class="form-check mb-3">
-            <input class="form-check-input" type="checkbox" id="recordarme" />
-            <label class="form-check-label small text-secondary" for="recordarme">
-              Recordarme en este dispositivo
-            </label>
-          </div>
+          <ul class="d-flex justify-content-center align-items-center gap-4 mb-4 list-unstyled fs-4">
+            <li>
+              <a href="https://wa.me/5493810000000" target="_blank" class="text-white-50">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://facebook.com" target="_blank" class="text-white-50">
+                <i class="fa-brands fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://instagram.com" target="_blank" class="text-white-50">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+            </li>
+          </ul>
 
-          <div id="login-error" class="alert alert-danger py-2 small d-none" role="alert"></div>
-
-          <button type="submit" class="btn btn-primary w-100 fw-semibold">
-            Iniciar sesión
-          </button>
-        </form>
-
-        <p class="text-center text-secondary small mt-4 mb-0">
-          ¿Problemas para ingresar? Comunicate con
-          <a href="mailto:contacto@escuelanormal.edu.ar" class="text-primary text-decoration-none fw-bold">Administración</a>.
-        </p>
-      </div>
+          <p class="mb-0 small text-white-50">
+            &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8 (Nicolas, Lucca, Abel, Ramiro).
+          </p>
+        </footer>
+      </main>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="login.js"></script>
   </body>
 </html>
