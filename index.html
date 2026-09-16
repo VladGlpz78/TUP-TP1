@@ -110,16 +110,55 @@
           </section>
 
           <div class="row g-4">
-            <section id="perfil" class="col-12 col-md-6">
-              <div class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100">
-                <h2 class="h5 fw-bold mb-2 text-primary">
-                  <i class="fa-solid fa-user me-2"></i> Perfil del Alumno
-                </h2>
-                <p class="text-secondary small mb-0">
-                  Aquí irá la foto, nombre completo, curso y datos del tutor.
-                </p>
-              </div>
-            </section>
+            <!-- PERFIL DEL ALUMNO CON INFO DETALLADA -->
+<section id="perfil" class="col-12 col-md-6">
+  <div class="card border-0 border-start border-primary border-4 shadow-sm rounded-4 p-4 h-100 bg-white">
+    
+    <div class="d-flex align-items-center gap-3 mb-4">
+      <h2 class="h5 fw-bold text-primary mb-0">
+        <i class="fa-solid fa-user me-2"></i> Perfil del Alumno
+      </h2>
+    </div>
+
+    <!-- Lista de detalles del perfil -->
+    <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
+      
+      <li class="d-flex justify-content-between border-bottom pb-2">
+        <span class="text-secondary fw-semibold">Nombre Completo:</span>
+        <span class="fw-bold text-dark">Ramiro Martin</span> <!--[cite: 8] -->
+      </li>
+      
+      <li class="d-flex justify-content-between border-bottom pb-2">
+        <span class="text-secondary fw-semibold">Edad:</span>
+        <span class="fw-bold text-dark">16 años</span>
+      </li>
+
+      <li class="d-flex justify-content-between border-bottom pb-2">
+        <span class="text-secondary fw-semibold">Curso y División:</span>
+        <span class="fw-bold text-dark">4to Año "B"</span>
+      </li>
+
+      <li class="d-flex justify-content-between border-bottom pb-2">
+        <span class="text-secondary fw-semibold">Año de Ingreso:</span>
+        <span class="fw-bold text-dark">2023</span>
+      </li>
+
+      <li class="d-flex justify-content-between border-bottom pb-2">
+        <span class="text-secondary fw-semibold">Idioma Extranjero:</span>
+        <span class="fw-bold text-dark">Inglés</span>
+      </li>
+      
+      <li class="d-flex flex-column gap-2 mt-2">
+        <span class="text-secondary fw-semibold">Cursos Extracurriculares:</span>
+        <div class="d-flex gap-2 flex-wrap">
+          <span class="badge bg-info text-dark rounded-pill px-3 py-2">Robótica Básico</span>
+          <span class="badge bg-primary rounded-pill px-3 py-2">Taller de Oratoria</span>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</section>
 
             <section id="materias" class="col-12 col-md-6">
               <div class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100">
