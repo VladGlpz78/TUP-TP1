@@ -61,3 +61,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 100);
     }
 });
+
+const btnCerrarSesion = document.getElementById('btn-cerrar-sesion');
+
+if (btnCerrarSesion) {
+    btnCerrarSesion.addEventListener('click', function(evento) {
+        evento.preventDefault();
+        
+        const confirmacion = confirm("¿Estás seguro que deseas cerrar sesión?");
+        
+        if (confirmacion) {
+            alert("¡Sesión cerrada con éxito! Nos vemos pronto.");
+            window.location.reload();
+        }
+    });
+}
