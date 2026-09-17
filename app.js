@@ -84,3 +84,42 @@ const btnImprimirNotas = document.getElementById('btn-imprimir-notas');
             window.print();
         });
     }
+
+const buscador = document.getElementById('buscador-materias');
+const itemsMateria = document.querySelectorAll('.materia-item');
+
+if (buscador) {
+    buscador.addEventListener('input', (e) => {
+        const texto = e.target.value.toLowerCase();
+        itemsMateria.forEach(item => {
+            const titulo = item.querySelector('.titulo-materia').textContent.toLowerCase();
+            item.style.display = titulo.includes(texto) ? 'block' : 'none';
+        });
+    });
+}
+
+function animarProgresoMaterias() {
+    const barras = document.querySelectorAll('.progress-materia');
+    barras.forEach(barra => {
+        const objetivo = barra.getAttribute('data-target');
+        const porcentajeTexto = barra.parentElement.previousElementSibling.querySelector('.porcentaje-materia');
+        
+        barra.style.width = '0%';
+        if(porcentajeTexto) porcentajeTexto.textContent = '0%';
+
+        setTimeout(() => {
+            barra.style.width = `${objetivo}%`;
+            barra.style.transition = "width 1s ease-in-out";
+            if(porcentajeTexto) porcentajeTexto.textContent = `${objetivo}%`;
+        }, 150);
+    });
+}
+
+const btnsPrograma = document.querySelectorAll('.btn-programa');
+btnsPrograma.forEach(btn => {
+    btn.addEventListener('click', function() {
+        const listaPrograma = this.nextElementSibling;
+        listaPrograma.classList.toggle('d-none'); 
+    });
+});
+
