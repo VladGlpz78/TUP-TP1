@@ -70,9 +70,6 @@
           <a href="#notas" class="nav-link text-white-600 px-3 py-2">
             <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
           </a>
-          <a href="#asistencias" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
-          </a>
           <a href="#horarios" class="nav-link text-white-600 px-3 py-2">
             <i class="fa-solid fa-clock me-2"></i> Horarios
           </a>
@@ -190,15 +187,226 @@
 
             <section id="materias" class="col-12 col-md-6">
               <div
-                class="card border-0 border-start border-primary border-4 shadow rounded-4 p-4 h-100"
+                class="card border-0 border-start border-primary border-4 shadow-sm rounded-4 p-4 h-100 bg-white"
               >
-                <h2 class="h5 fw-bold mb-2 text-primary">
+                <h2 class="h5 fw-bold text-primary mb-3">
                   <i class="fa-solid fa-book me-2"></i> Materias en curso
                 </h2>
-                <p class="text-secondary small mb-0">
-                  Listado de materias, profesores a cargo y programas de
-                  estudio.
-                </p>
+
+                <input
+                  type="text"
+                  id="buscador-materias"
+                  class="form-control mb-3"
+                  placeholder="🔍 Buscar materia por nombre..."
+                />
+
+                <!-- Se eliminó el overflow-y-auto y el max-height para que fluya natural -->
+                <div id="lista-materias" class="d-flex flex-column gap-3">
+                  <!-- MATERIA 1: Matemáticas -->
+                  <div class="materia-item border rounded-3 p-3">
+                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
+                      Matemáticas
+                    </h3>
+                    <p class="small text-muted mb-2">
+                      Prof. Martínez | Carga horaria: 6hs
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
+                    >
+                      <span>Programa completado</span>
+                      <span class="porcentaje-materia">10%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 6px">
+                      <div
+                        class="progress-bar bg-primary progress-materia"
+                        data-target="75"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
+                    >
+                      <span class="small text-muted fw-semibold"
+                        >Asistencia en la materia:</span
+                      >
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success px-2 py-1">85%</span>
+                        <span class="small fw-bold text-success">
+                          <i class="fa-solid fa-circle-check me-1"></i>Regular
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
+                    >
+                      Ver programa de estudio
+                      <i class="fa-solid fa-chevron-down ms-1"></i>
+                    </button>
+                    <ul
+                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
+                    >
+                      <li>Unidad 1: Álgebra Lineal</li>
+                      <li>Unidad 2: Ecuaciones de 2do Grado</li>
+                      <li>Unidad 3: Funciones y Gráficos</li>
+                    </ul>
+                  </div>
+
+                  <div class="materia-item border rounded-3 p-3">
+                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
+                      Física
+                    </h3>
+                    <p class="small text-muted mb-2">
+                      Prof. Ruiz | Carga horaria: 4hs
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
+                    >
+                      <span>Programa completado</span>
+                      <span class="porcentaje-materia">35%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 6px">
+                      <div
+                        class="progress-bar bg-success progress-materia"
+                        data-target="45"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
+                    >
+                      <span class="small text-muted fw-semibold"
+                        >Asistencia en la materia:</span
+                      >
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success px-2 py-1">92%</span>
+                        <span class="small fw-bold text-success">
+                          <i class="fa-solid fa-circle-check me-1"></i>Regular
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
+                    >
+                      Ver programa de estudio
+                      <i class="fa-solid fa-chevron-down ms-1"></i>
+                    </button>
+                    <ul
+                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
+                    >
+                      <li>Unidad 1: Cinemática</li>
+                      <li>Unidad 2: Dinámica y Leyes de Newton</li>
+                      <li>Unidad 3: Trabajo y Energía</li>
+                    </ul>
+                  </div>
+
+                  <div class="materia-item border rounded-3 p-3">
+                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
+                      Inglés Nivel II
+                    </h3>
+                    <p class="small text-muted mb-2">
+                      Prof. Smith | Carga horaria: 3hs
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
+                    >
+                      <span>Programa completado</span>
+                      <span class="porcentaje-materia">45%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 6px">
+                      <div
+                        class="progress-bar bg-info progress-materia"
+                        data-target="60"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
+                    >
+                      <span class="small text-muted fw-semibold"
+                        >Asistencia en la materia:</span
+                      >
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success px-2 py-1">100%</span>
+                        <span class="small fw-bold text-success">
+                          <i class="fa-solid fa-circle-check me-1"></i>Regular
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
+                    >
+                      Ver programa de estudio
+                      <i class="fa-solid fa-chevron-down ms-1"></i>
+                    </button>
+                    <ul
+                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
+                    >
+                      <li>Unidad 1: Verb To Be & Present Simple</li>
+                      <li>Unidad 2: Past Simple & Continuous</li>
+                      <li>Unidad 3: Present Perfect</li>
+                    </ul>
+                  </div>
+
+                  <div class="materia-item border rounded-3 p-3">
+                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
+                      Taller de Oratoria
+                    </h3>
+                    <p class="small text-muted mb-2">
+                      Prof. Gómez | Carga horaria: 2hs
+                    </p>
+
+                    <div
+                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
+                    >
+                      <span>Programa completado</span>
+                      <span class="porcentaje-materia">85%</span>
+                    </div>
+                    <div class="progress mb-3" style="height: 6px">
+                      <div
+                        class="progress-bar bg-warning progress-materia"
+                        data-target="90"
+                        style="width: 0%"
+                      ></div>
+                    </div>
+
+                    <div
+                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
+                    >
+                      <span class="small text-muted fw-semibold"
+                        >Asistencia en la materia:</span
+                      >
+                      <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-success px-2 py-1">88%</span>
+                        <span class="small fw-bold text-success">
+                          <i class="fa-solid fa-circle-check me-1"></i>Regular
+                        </span>
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
+                    >
+                      Ver programa de estudio
+                      <i class="fa-solid fa-chevron-down ms-1"></i>
+                    </button>
+                    <ul
+                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
+                    >
+                      <li>Unidad 1: Expresión Corporal</li>
+                      <li>Unidad 2: Estructura del Discurso</li>
+                      <li>Unidad 3: Manejo del Miedo Escénico</li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </section>
 
@@ -249,28 +457,10 @@
                       </tr>
                       <tr>
                         <td class="fw-bold text-start text-secondary">
-                          Historia
-                        </td>
-                        <td>6</td>
-                        <td>8</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
                           Inglés
                         </td>
                         <td>10</td>
                         <td>9</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Robotica
-                        </td>
-                        <td>6</td>
-                        <td>4</td>
                         <td>-</td>
                         <td>-</td>
                       </tr>
@@ -333,37 +523,6 @@
               </div>
             </section>
 
-            <section id="asistencias" class="col-12 col-md-6">
-              <div
-                class="card border-0 border-start border-warning border-4 shadow rounded-4 p-4 h-100"
-              >
-                <h2 class="h5 fw-bold mb-3 text-warning">
-                  <i class="fa-solid fa-calendar-check me-2"></i> Asistencias
-                </h2>
-                <p class="text-secondary small mb-4">
-                  Registro de faltas, tardanzas y justificaciones.
-                </p>
-
-                <div class="mt-auto">
-                  <div class="d-flex justify-content-between mb-1">
-                    <span class="small fw-bold">Asistencia Anual</span>
-                    <span class="small text-muted" id="texto-porcentaje"
-                      >0%</span
-                    >
-                  </div>
-                  <div class="progress" style="height: 25px">
-                    <div
-                      id="barra-asistencia"
-                      class="progress-bar bg-warning progress-bar-striped progress-bar-animated"
-                      role="progressbar"
-                      style="width: 0%"
-                      data-target="85"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </section>
-
             <section id="horarios" class="col-12">
               <div class="card border-0 shadow rounded-4 p-4 h-100">
                 <h2 class="h5 fw-bold mb-2 text-primary">
@@ -397,42 +556,6 @@
               <strong>Administración:</strong> (0381) 450-9999
             </a>
           </div>
-
-          <ul
-            class="d-flex justify-content-center align-items-center gap-4 mb-4 list-unstyled fs-4"
-          >
-            <li>
-              <a
-                href="https://wa.me/5493810000000"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white-50"
-              >
-                <i class="fa-brands fa-whatsapp"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white-50"
-              >
-                <i class="fa-brands fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-white-50"
-              >
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
-
           <p class="mb-0 small text-white-50">
             &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8
             (Nicolas, Lucca, Abel, Ramiro).
