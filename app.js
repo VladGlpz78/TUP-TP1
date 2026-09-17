@@ -76,3 +76,11 @@ if (btnCerrarSesion) {
         }
     });
 }
+
+const btnImprimirNotas = document.getElementById('btn-imprimir-notas');
+    
+    if (btnImprimirNotas) {
+        btnImprimirNotas.addEventListener('click', () => {
+            window.print();
+        });
+    }
