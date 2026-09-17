@@ -123,3 +123,41 @@ btnsPrograma.forEach(btn => {
     });
 });
 
+
+function calcularProximaClase() {
+    const textoProximaClase = document.getElementById('texto-proxima-clase');
+    if (!textoProximaClase) return;
+
+    const ahora = new Date();
+    const diaSemana = ahora.getDay(); 
+    const horaActual = ahora.getHours();
+    const minActual = ahora.getMinutes();
+    const tiempoActual = horaActual + (minActual / 60);
+    const grillaHorarios = [
+        { dia: 1, inicio: 14.0, materia: "Matemáticas", profe: "Prof. Martínez", aula: "Aula 1" },
+        { dia: 1, inicio: 15.66, materia: "Literatura", profe: "Prof. García", aula: "Aula 2" },
+        { dia: 4, inicio: 14.0, materia: "Inglés", profe: "Prof. Smith", aula: "Laboratorio de Idiomas" }, 
+        { dia: 4, inicio: 15.66, materia: "Oratoria", profe: "Prof. Gópez", aula: "Aula 3" }, 
+        { dia: 5, inicio: 14.0, materia: "Oratoria", profe: "Prof. Gómez", aula: "Salón de Actos" }
+    ];
+
+    const clasesDeHoy = grillaHorarios.filter(clase => clase.dia === diaSemana && clase.inicio >= tiempoActual);
+    clasesDeHoy.sort((a, b) => a.inicio - b.inicio);
+    if (diaSemana === 0 || diaSemana === 6) {
+        textoProximaClase.innerHTML = "¡Es fin de semana! No tienes clases programadas. ";
+        textoProximaClase.className = "mb-0 small text-success fw-bold";
+    } else if (clasesDeHoy.length > 0) {
+        const proxima = clasesDeHoy[0];
+        const horaStr = Math.floor(proxima.inicio);
+        const minStr = Math.round((proxima.inicio - horaStr) * 60).toString().padStart(2, '0');
+        
+        textoProximaClase.innerHTML = `Tu próxima clase es <strong>${proxima.materia}</strong> (${proxima.profe}) a las <strong>${horaStr}:${minStr}</strong> en el <strong>${proxima.aula}</strong>.`;
+        textoProximaClase.className = "mb-0 small text-dark";
+    } else {
+        textoProximaClase.innerHTML = "¡Terminaste tu jornada! Ya no tienes más clases por hoy. ";
+        textoProximaClase.className = "mb-0 small text-success fw-bold";
+    }
+}
+
+calcularProximaClase();
+setInterval(calcularProximaClase, 60000);
