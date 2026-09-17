@@ -197,12 +197,10 @@
                   type="text"
                   id="buscador-materias"
                   class="form-control mb-3"
-                  placeholder="🔍 Buscar materia por nombre..."
+                  placeholder=" Buscar materia por nombre..."
                 />
 
-                <!-- Se eliminó el overflow-y-auto y el max-height para que fluya natural -->
                 <div id="lista-materias" class="d-flex flex-column gap-3">
-                  <!-- MATERIA 1: Matemáticas -->
                   <div class="materia-item border rounded-3 p-3">
                     <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
                       Matemáticas
@@ -307,7 +305,7 @@
 
                   <div class="materia-item border rounded-3 p-3">
                     <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
-                      Inglés Nivel II
+                      Inglés
                     </h3>
                     <p class="small text-muted mb-2">
                       Prof. Smith | Carga horaria: 3hs
@@ -446,6 +444,15 @@
                         <td>-</td>
                         <td>-</td>
                       </tr>
+                       <tr>
+                        <td class="fw-bold text-start text-secondary">
+                          Fisica
+                        </td>
+                        <td>4</td>
+                        <td>2</td>
+                        <td>-</td>
+                        <td>-</td>
+                      </tr>
                       <tr>
                         <td class="fw-bold text-start text-secondary">
                           Literatura
@@ -524,13 +531,64 @@
             </section>
 
             <section id="horarios" class="col-12">
-              <div class="card border-0 shadow rounded-4 p-4 h-100">
-                <h2 class="h5 fw-bold mb-2 text-primary">
+              <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+                <h2 class="h5 fw-bold text-primary mb-3">
                   <i class="fa-solid fa-clock me-2"></i> Horarios de Clase
                 </h2>
-                <p class="text-secondary small mb-0">
-                  Grilla semanal con los horarios de cada materia y recreos.
-                </p>
+
+                <div
+                  class="alert alert-primary d-flex align-items-center mb-4 border-0 shadow-sm"
+                  role="alert"
+                >
+                  <i class="fa-solid fa-robot fs-2 me-3 text-primary"></i>
+                  <div>
+                    <h6 class="fw-bold mb-1">Asistente Virtual</h6>
+                    <p id="texto-proxima-clase" class="mb-0 small">
+                      Calculando tu próxima clase en tiempo real...
+                    </p>
+                  </div>
+                </div>
+
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered table-striped text-center align-middle small mb-0"
+                  >
+                    <thead class="table-primary">
+                      <tr>
+                        <th>Hora</th>
+                        <th>Lunes</th>
+                        <th>Martes</th>
+                        <th>Miércoles</th>
+                        <th>Jueves</th>
+                        <th>Viernes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="fw-bold text-secondary">14:00 - 15:20</td>
+                        <td>Matemáticas</td>
+                        <td>Física</td>
+                        <td>Matemáticas</td>
+                        <td>Inglés</td>
+                        <td>Oratoria</td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold text-secondary">15:20 - 15:40</td>
+                        <td colspan="5" class="table-warning fw-bold text-dark">
+                          RECREO GENERAL
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold text-secondary">15:40 - 17:00</td>
+                        <td>Literatura</td>
+                        <td>Matemáticas</td>
+                        <td>Inglés</td>
+                        <td>Oratoria</td>
+                        <td>Inglés</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </section>
           </div>
