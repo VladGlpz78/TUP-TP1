@@ -1,158 +1,107 @@
-   /*:root {
-  --color-primario: #0f2a4a;
-  --color-secundario: #1a4a7a;
- --color-fondo: #f4f6f9;
-  --color-texto: #333333;
-  --color-blanco: #ffffff;
-  --fuente-principal: 'Segoe UI', Tahoma, sans-serif;
-  --sombra-tarjeta: 0 2px 8px rgba(0,0,0,.06);
-  --borde-radio: 12px;
-  
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root {
+  --primary-color: #0f172a;
+  --secondary-color: #334155;
+  --accent-color: #2563eb;
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-main: #1e293b;
+  --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --radius-lg: 1rem;
 }
 
 body {
-  font-family: var(--fuente-principal);
-  background-color: var(--color-fondo);
-  color: var(--color-texto);
-  scroll-behavior: smooth; 
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-main);
 }
 
+.bg-fondo { background-color: var(--bg-color) !important; }
+.text-primary { color: var(--accent-color) !important; }
+.bg-primary { background-color: var(--accent-color) !important; }
+.btn-primary { background-color: var(--accent-color); border: none; }
+.btn-primary:hover { background-color: #1d4ed8; }
+.bg-primary-subtle { background-color: #eff6ff !important; }
+
+/* Menú Lateral */
 .sidebar-custom {
-  width: 260px;
-  background-color: var(--color-primario);
-  min-height: 100vh;
-  z-index: 1030;
-}
-
-.main-content {
-  width: 100%;
-}
-
-
-@media (min-width: 768px) {
-  .main-content {
-    margin-left: 260px;
-    width: calc(100% - 260px);
-  }
+  background-color: var(--primary-color);
+  width: 280px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .user-box {
-  background-color: #12365f;
-  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-link-custom {
-  color: var(--color-blanco);
-  border-radius: 8px;
-  transition: 0.2s;
-  padding: 10px 14px;
+  color: #94a3b8;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+  font-weight: 500;
 }
 
-.nav-link-custom:hover, .nav-link-custom.active {
-  background-color: var(--color-secundario);
-  color: var(--color-blanco);
+.nav-link-custom:hover, 
+.nav-link-custom.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
 }
 
-.topbar-custom {
-  background-color: var(--color-primario);
-  color: var(--color-blanco);
+.hover-danger:hover {
+  background-color: rgba(239, 68, 68, 0.1);
 }
 
+/* Diseño de Tarjetas */
 .card-custom {
-  border: none;
-  border-radius: var(--borde-radio);
-  box-shadow: var(--sombra-tarjeta);
-  background-color: var(--color-blanco);
+  background-color: var(--surface-color);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.border-materia-1 { border-left: 5px solid #1a5fb4 ; }
-.border-materia-2 { border-left: 5px solid #27ae60 ; }
-.border-materia-3 { border-left: 5px solid #f39c12 ; }
-
-.redes-sociales {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
+.card-custom:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
-.redes-sociales .icon-content {
-  position: relative;
+.hover-shadow:hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  transform: translateY(-2px);
+}
+.transition-all { transition: all 0.2s ease; }
+
+/* Comportamiento de SPA (Secciones) */
+.seccion-oculta { display: none; }
+.seccion-activa { display: block; animation: fadeIn 0.4s ease-in-out; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.redes-sociales .icon-content .tooltip {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 5px;
-  opacity: 0;
-  visibility: hidden;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+.cursor-pointer { cursor: pointer; }
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+/* COLORES ESPECÍFICOS PARA LA TABLA DE HORARIOS */
+.bg-cabecera-amarilla { background-color: #ffff00 !important; }
+.bg-materia-verde { background-color: #d4edda !important; }
+.bg-materia-lila { background-color: #e2d9f3 !important; }
+.bg-materia-naranja { background-color: #ffe8d6 !important; }
+.bg-materia-amarillo { background-color: #fff3cd !important; }
+.bg-materia-rosa { background-color: #f8d7da !important; }
+
+.tabla-horarios th, 
+.tabla-horarios td {
+  border: 1px solid #6c757d !important; 
+  padding: 0.75rem 0.5rem;
 }
-
-.redes-sociales .icon-content:hover .tooltip {
-  opacity: 1;
-  visibility: visible;
-  top: -50px;
-}
-
-.redes-sociales .icon-content a {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  color: #4d4d4d;
-  background-color: #fff;
-  transition: all 0.3s ease-in-out;
-  text-decoration: none;
-}
-
-.redes-sociales .icon-content a:hover {
-  box-shadow: 3px 2px 45px 0px rgba(0, 0, 0, 0.12);
-  color: white;
-}
-
-.redes-sociales .icon-content a svg {
-  position: relative;
-  z-index: 1;
-  width: 24px;
-  height: 24px;
-}
-
-.redes-sociales .icon-content a .filled {
-  position: absolute;
-  top: auto;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0;
-  background-color: #000;
-  transition: all 0.3s ease-in-out;
-}
-
-.redes-sociales .icon-content a:hover .filled {
-  height: 100%;
-}
-
-
-
-.redes-sociales .icon-content a[data-social="facebook"] .filled,
-.redes-sociales .icon-content a[data-social="facebook"] ~ .tooltip {
-  background-color: #1877F2; 
+.tabla-horarios small {
+  display: block;
+  font-size: 0.75em;
+  margin-top: 4px;
 }
