@@ -3,580 +3,309 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <meta
-      name="description"
-      content="Portal de gestión académica de la Escuela Normal. Consulta de notas, asistencias, horarios y pagos para alumnos y padres."
-    />
-    <meta name="author" content="Escuela Normal" />
-    <meta
-      name="keywords"
-      content="Portal Académico, Escuela Normal, Gestión Académica, Notas, Asistencias, Horarios, Pagos"
-    />
-    <meta name="robots" content="index, follow" />
-
+    <meta name="description" content="Portal de gestión académica de la Escuela Normal." />
     <title>Portal Académico - Escuela Normal</title>
-
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    />
-
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body class="bg-light m-0 p-0">
+  <body class="bg-fondo m-0 p-0">
     <div class="d-flex min-vh-100">
-      <aside
-        class="bg-dark text-white p-3 d-none d-md-flex flex-column sticky-top vh-100"
-        style="width: 260px"
-      >
-        
-        <div
-          class="bg-secondary bg-opacity-25 rounded-4 d-flex align-items-center gap-3 p-3 mb-4"
-        >
-          <img
-            src="https://i.pravatar.cc/100?img=12"
-            alt="Foto de perfil del alumno"
-            class="rounded-circle"
-            width="45"
-            height="45"
-          />
-          <div class="lh-sm">
-            <div class="fw-bold">Ramiro</div>
-            <small class="text-white-50"> Alumno Regular </small>
-          </div>
+      
+      <aside class="offcanvas-md offcanvas-start sidebar-custom text-white p-3 d-flex flex-column" tabindex="-1" id="sidebarMenu">
+        <div class="offcanvas-header d-md-none">
+          <h5 class="offcanvas-title fw-bold">Menú</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu" aria-label="Close"></button>
         </div>
+        
+        <div class="offcanvas-body d-flex flex-column flex-grow-1 p-0">
+          <div class="user-box d-flex align-items-center gap-3 p-3 mb-4 rounded-4 shadow-sm">
+            <img src="https://i.pravatar.cc/100?img=12" alt="Foto de perfil" class="rounded-circle" width="45" height="45" />
+            <div class="lh-sm">
+              <div class="fw-bold text-dark">Ramiro</div>
+              <small class="text-secondary">Alumno Regular</small>
+            </div>
+          </div>
 
-        <nav class="nav flex-column gap-2 mb-auto">
-          <a href="#inicio" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-house me-2"></i> Inicio
-          </a>
-          <a href="#perfil" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-user me-2"></i> Mi Perfil
-          </a>
-          <a href="#materias" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-book me-2"></i> Materias
-          </a>
-          <a href="#notas" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
-          </a>
-          <a href="#horarios" class="nav-link text-white-600 px-3 py-2">
-            <i class="fa-solid fa-clock me-2"></i> Horarios
-          </a>
-        </nav>
+          <nav class="nav flex-column gap-2 mb-auto w-100">
+            <a href="#inicio" class="nav-link nav-link-custom active px-3 py-2" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-house me-2"></i> Inicio
+            </a>
+            <a href="#perfil" class="nav-link nav-link-custom px-3 py-2" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-user me-2"></i> Mi Perfil
+            </a>
+            <a href="#materias" class="nav-link nav-link-custom px-3 py-2" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-book me-2"></i> Materias
+            </a>
+            <a href="#notas" class="nav-link nav-link-custom px-3 py-2" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-graduation-cap me-2"></i> Notas y Libreta
+            </a>
+            <a href="#horarios" class="nav-link nav-link-custom px-3 py-2" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-clock me-2"></i> Horarios
+            </a>
+          </nav>
 
-        <a
-          href="#"
-          id="btn-cerrar-sesion"
-          class="nav-link text-danger mt-3 px-3 py-2"
-        >
-          <i class="fa-solid fa-right-from-bracket me-2"></i> Cerrar sesión
-        </a>
+          <a href="#" id="btn-cerrar-sesion" class="nav-link text-danger mt-3 px-3 py-2 fw-semibold rounded-3 hover-danger">
+            <i class="fa-solid fa-right-from-bracket me-2"></i> Reiniciar vista
+          </a>
+        </div>
       </aside>
 
-      <main class="flex-grow-1 d-flex flex-column w-100">
-        <header
-          class="bg-primary text-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top shadow"
-        >
-          <div>
-            <h1 class="h5 mb-0 fw-semibold">Escuela Normal</h1>
-            <small class="text-white-50"
-              >Portal interactivo para Alumnos y Padres</small
-            >
+      <!-- Contenido Principal -->
+      <main class="flex-grow-1 d-flex flex-column w-100 main-content">
+        
+        <!-- Cabecera -->
+        <header class="bg-white p-3 px-4 d-flex justify-content-between align-items-center sticky-top border-bottom shadow-sm">
+          <div class="d-flex align-items-center gap-3">
+            <button class="btn btn-light d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div>
+              <h1 class="h5 mb-0 fw-bold text-dark">Escuela Normal</h1>
+              <small class="text-muted d-none d-sm-block">Portal interactivo para Alumnos y Padres</small>
+            </div>
           </div>
-          <div class="d-flex align-items-center gap-3 fs-5">
-            <span><i class="fa-solid fa-bell"></i></span>
-            
+          <div class="d-flex align-items-center gap-3 fs-5 text-secondary">
+            <span class="position-relative cursor-pointer hover-text-primary">
+              <i class="fa-solid fa-bell"></i>
+              <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
+            </span>
+          </div>
         </header>
 
+        <!-- Secciones Dinámicas -->
         <div class="p-3 p-md-4 flex-grow-1">
-          <section id="inicio" class="mb-5">
-  <div class="card border-0 shadow rounded-4 p-4">
-    <!-- Agregamos justify-content-center para centrar el bloque horizontalmente -->
-    <div class="row align-items-center justify-content-center g-4">
-      
-      <!-- Columna izquierda: Texto -->
-      <div class="col-12 col-md-6">
-        <h2 class="h4 fw-bold mb-3 text-primary">
-          Bienvenido a la Escuela Normal
-        </h2>
-        <p class="text-secondary mb-0">
-          Este portal está diseñado para brindar a nuestra comunidad educativa un acceso rápido y transparente a toda la información académica y administrativa. Desde hace más de 50 años, la Escuela Normal se compromete con la excelencia educativa, y hoy damos un paso más hacia la innovación digital para mantenernos conectados.
-        </p>
-      </div>
-
-      <!-- Columna derecha: Imagen -->
-      <div class="col-12 col-md-6">
-        <div class="w-100 overflow-hidden rounded-4 shadow-sm" style="max-height: 280px;">
-          <img 
-            src="imagen_pagina.jpg" 
-            alt="Útiles escolares y pizarra" 
-            class="w-100 h-100 object-fit-cover"
-            style="min-height: 220px; max-height: 280px;"
-          />
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-          <div class="row g-4">
-            <section id="perfil" class="col-12 col-md-6">
-              <div
-                class="card border-0 border-start border-primary border-4 shadow-sm rounded-4 p-4 h-100 bg-white"
-              >
-                <div class="d-flex align-items-center gap-3 mb-4">
-                  <h2 class="h5 fw-bold text-primary mb-0">
-                    <i class="fa-solid fa-user me-2"></i> Perfil del Alumno
-                  </h2>
+          
+          <section id="inicio" class="seccion-activa">
+            <div class="card card-custom p-4 mb-4">
+              <div class="row align-items-center g-4">
+                <div class="col-12 col-md-7">
+                  <h2 class="h3 fw-bold mb-3 text-primary">Bienvenido a tu ciclo lectivo</h2>
+                  <p class="text-muted mb-4 lh-lg">
+                    Este portal está diseñado para brindar a nuestra comunidad educativa un acceso rápido y transparente a toda la información académica. Gestiona tus notas, asistencias y horarios desde un solo lugar.
+                  </p>
+                  <p id="texto-proxima-clase" class="alert alert-info border-0 shadow-sm mb-0">Cargando próximos horarios...</p>
                 </div>
+                <div class="col-12 col-md-5">
+                  <div class="w-100 overflow-hidden rounded-4 shadow-sm" style="height: 200px;">
+                    <img src="/TUP-TP1/imagen_pagina.jpg" alt="Universidad" class="w-100 h-100 object-fit-cover" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
+          <div class="row g-4 bento-grid">
+            
+            <!-- SECCIÓN: PERFIL -->
+            <section id="perfil" class="col-12 col-xl-6 seccion-oculta">
+              <div class="card card-custom p-4 h-100">
+                <h2 class="h5 fw-bold text-dark mb-4 border-bottom pb-2">
+                  <i class="fa-solid fa-user text-primary me-2"></i> Perfil del Alumno
+                </h2>
                 <ul class="list-unstyled mb-0 d-flex flex-column gap-3">
-                  <li class="d-flex justify-content-between border-bottom pb-2">
-                    <span class="text-secondary fw-semibold"
-                      >Nombre Completo:</span
-                    >
+                  <li class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted fw-medium">Nombre Completo</span>
                     <span class="fw-bold text-dark">Ramiro Martin</span>
                   </li>
-
-                  <li class="d-flex justify-content-between border-bottom pb-2">
-                    <span class="text-secondary fw-semibold">Edad:</span>
-                    <span class="fw-bold text-dark">16 años</span>
+                  <li class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted fw-medium">Edad</span>
+                    <span class="fw-bold text-dark">22 años</span>
                   </li>
-
-                  <li class="d-flex justify-content-between border-bottom pb-2">
-                    <span class="text-secondary fw-semibold"
-                      >Curso y División:</span
-                    >
-                    <span class="fw-bold text-dark">4to Año "B"</span>
+                  <li class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted fw-medium">Año</span>
+                    <span class="badge bg-primary-subtle text-primary fw-bold px-3 py-2 rounded-pill">2° Año</span>
                   </li>
-
-                  <li class="d-flex justify-content-between border-bottom pb-2">
-                    <span class="text-secondary fw-semibold"
-                      >Año de Ingreso:</span
-                    >
-                    <span class="fw-bold text-dark">2023</span>
-                  </li>
-
-                  <li class="d-flex justify-content-between border-bottom pb-2">
-                    <span class="text-secondary fw-semibold"
-                      >Idioma Extranjero:</span
-                    >
-                    <span class="fw-bold text-dark">Inglés</span>
-                  </li>
-
-                  <li class="d-flex flex-column gap-2 mt-2">
-                    <span class="text-secondary fw-semibold"
-                      >Cursos Extracurriculares:</span
-                    >
-                    <div class="d-flex gap-2 flex-wrap">
-                      <span
-                        class="badge bg-info text-dark rounded-pill px-3 py-2"
-                        >Robótica Básico</span
-                      >
-                      <span class="badge bg-primary rounded-pill px-3 py-2"
-                        >Taller de Oratoria</span
-                      >
-                    </div>
+                  <li class="d-flex justify-content-between align-items-center">
+                    <span class="text-muted fw-medium">Año de Ingreso</span>
+                    <span class="fw-bold text-dark">2024</span>
                   </li>
                 </ul>
               </div>
             </section>
 
-            <section id="materias" class="col-12 col-md-6">
-              <div
-                class="card border-0 border-start border-primary border-4 shadow-sm rounded-4 p-4 h-100 bg-white"
-              >
-                <h2 class="h5 fw-bold text-primary mb-3">
-                  <i class="fa-solid fa-book me-2"></i> Materias en curso
+            <!-- SECCIÓN: MATERIAS -->
+            <section id="materias" class="col-12 col-xl-6 seccion-oculta">
+              <div class="card card-custom p-4 h-100">
+                <h2 class="h5 fw-bold text-dark mb-3 border-bottom pb-2">
+                  <i class="fa-solid fa-book text-primary me-2"></i> Materias en curso
                 </h2>
-
-                <input
-                  type="text"
-                  id="buscador-materias"
-                  class="form-control mb-3"
-                  placeholder=" Buscar materia por nombre..."
-                />
-
-                <div id="lista-materias" class="d-flex flex-column gap-3">
-                  <div class="materia-item border rounded-3 p-3">
-                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
-                      Matemáticas
-                    </h3>
-                    <p class="small text-muted mb-2">
-                      Prof. Martínez | Carga horaria: 6hs
-                    </p>
-
-                    <div
-                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
-                    >
-                      <span>Programa completado</span>
-                      <span class="porcentaje-materia">10%</span>
-                    </div>
-                    <div class="progress mb-3" style="height: 6px">
-                      <div
-                        class="progress-bar bg-primary progress-materia"
-                        data-target="75"
-                        style="width: 0%"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
-                    >
-                      <span class="small text-muted fw-semibold"
-                        >Asistencia en la materia:</span
-                      >
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-success px-2 py-1">85%</span>
-                        <span class="small fw-bold text-success">
-                          <i class="fa-solid fa-circle-check me-1"></i>Regular
-                        </span>
+                <input type="text" id="buscador-materias" class="form-control bg-light border-0 mb-4 shadow-none" placeholder="🔍 Buscar materia..." />
+                
+                <div id="lista-materias" class="d-flex flex-column gap-3 overflow-auto pe-2" style="max-height: 400px;">
+                  <div class="materia-item p-3 border rounded-4 bg-white hover-shadow transition-all">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div>
+                        <h3 class="h6 fw-bold mb-0 titulo-materia text-dark">Programación IV</h3>
+                        <small class="text-muted">Ing. Moreno / TUP Costilla</small>
                       </div>
+                      <span class="badge bg-success-subtle text-success px-2 py-1">85% Asistencia</span>
                     </div>
-
-                    <button
-                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
-                    >
-                      Ver programa de estudio
-                      <i class="fa-solid fa-chevron-down ms-1"></i>
-                    </button>
-                    <ul
-                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
-                    >
-                      <li>Unidad 1: Álgebra Lineal</li>
-                      <li>Unidad 2: Ecuaciones de 2do Grado</li>
-                      <li>Unidad 3: Funciones y Gráficos</li>
-                    </ul>
+                    <div class="progress mt-3" style="height: 6px">
+                      <div class="progress-bar bg-primary" style="width: 85%"></div>
+                    </div>
+                  </div>
+                  
+                  <div class="materia-item p-3 border rounded-4 bg-white hover-shadow transition-all">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div>
+                        <h3 class="h6 fw-bold mb-0 titulo-materia text-dark">Gestión de desarrollo de Software</h3>
+                        <small class="text-muted">Ing. Ayunta, Irene</small>
+                      </div>
+                      <span class="badge bg-success-subtle text-success px-2 py-1">92% Asistencia</span>
+                    </div>
+                    <div class="progress mt-3" style="height: 6px">
+                      <div class="progress-bar bg-info" style="width: 92%"></div>
+                    </div>
                   </div>
 
-                  <div class="materia-item border rounded-3 p-3">
-                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
-                      Física
-                    </h3>
-                    <p class="small text-muted mb-2">
-                      Prof. Ruiz | Carga horaria: 4hs
-                    </p>
-
-                    <div
-                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
-                    >
-                      <span>Programa completado</span>
-                      <span class="porcentaje-materia">35%</span>
-                    </div>
-                    <div class="progress mb-3" style="height: 6px">
-                      <div
-                        class="progress-bar bg-success progress-materia"
-                        data-target="45"
-                        style="width: 0%"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
-                    >
-                      <span class="small text-muted fw-semibold"
-                        >Asistencia en la materia:</span
-                      >
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-success px-2 py-1">92%</span>
-                        <span class="small fw-bold text-success">
-                          <i class="fa-solid fa-circle-check me-1"></i>Regular
-                        </span>
+                  <div class="materia-item p-3 border rounded-4 bg-white hover-shadow transition-all">
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                      <div>
+                        <h3 class="h6 fw-bold mb-0 titulo-materia text-dark">Metodología de Sistemas II</h3>
+                        <small class="text-muted">Ing. Estrada, Cynthia</small>
                       </div>
+                      <span class="badge bg-success-subtle text-success px-2 py-1">88% Asistencia</span>
                     </div>
-
-                    <button
-                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
-                    >
-                      Ver programa de estudio
-                      <i class="fa-solid fa-chevron-down ms-1"></i>
-                    </button>
-                    <ul
-                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
-                    >
-                      <li>Unidad 1: Cinemática</li>
-                      <li>Unidad 2: Dinámica y Leyes de Newton</li>
-                      <li>Unidad 3: Trabajo y Energía</li>
-                    </ul>
-                  </div>
-
-                  <div class="materia-item border rounded-3 p-3">
-                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
-                      Inglés
-                    </h3>
-                    <p class="small text-muted mb-2">
-                      Prof. Smith | Carga horaria: 3hs
-                    </p>
-
-                    <div
-                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
-                    >
-                      <span>Programa completado</span>
-                      <span class="porcentaje-materia">45%</span>
+                    <div class="progress mt-3" style="height: 6px">
+                      <div class="progress-bar bg-warning" style="width: 88%"></div>
                     </div>
-                    <div class="progress mb-3" style="height: 6px">
-                      <div
-                        class="progress-bar bg-info progress-materia"
-                        data-target="60"
-                        style="width: 0%"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
-                    >
-                      <span class="small text-muted fw-semibold"
-                        >Asistencia en la materia:</span
-                      >
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-success px-2 py-1">100%</span>
-                        <span class="small fw-bold text-success">
-                          <i class="fa-solid fa-circle-check me-1"></i>Regular
-                        </span>
-                      </div>
-                    </div>
-
-                    <button
-                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
-                    >
-                      Ver programa de estudio
-                      <i class="fa-solid fa-chevron-down ms-1"></i>
-                    </button>
-                    <ul
-                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
-                    >
-                      <li>Unidad 1: Verb To Be & Present Simple</li>
-                      <li>Unidad 2: Past Simple & Continuous</li>
-                      <li>Unidad 3: Present Perfect</li>
-                    </ul>
-                  </div>
-
-                  <div class="materia-item border rounded-3 p-3">
-                    <h3 class="h6 fw-bold mb-1 titulo-materia text-dark">
-                      Taller de Oratoria
-                    </h3>
-                    <p class="small text-muted mb-2">
-                      Prof. Gómez | Carga horaria: 2hs
-                    </p>
-
-                    <div
-                      class="d-flex justify-content-between small mb-1 fw-semibold text-secondary"
-                    >
-                      <span>Programa completado</span>
-                      <span class="porcentaje-materia">85%</span>
-                    </div>
-                    <div class="progress mb-3" style="height: 6px">
-                      <div
-                        class="progress-bar bg-warning progress-materia"
-                        data-target="90"
-                        style="width: 0%"
-                      ></div>
-                    </div>
-
-                    <div
-                      class="d-flex justify-content-between align-items-center bg-light p-2 rounded border mb-3"
-                    >
-                      <span class="small text-muted fw-semibold"
-                        >Asistencia en la materia:</span
-                      >
-                      <div class="d-flex align-items-center gap-2">
-                        <span class="badge bg-success px-2 py-1">88%</span>
-                        <span class="small fw-bold text-success">
-                          <i class="fa-solid fa-circle-check me-1"></i>Regular
-                        </span>
-                      </div>
-                    </div>
-
-                    <button
-                      class="btn btn-sm btn-light w-100 text-start fw-semibold btn-programa"
-                    >
-                      Ver programa de estudio
-                      <i class="fa-solid fa-chevron-down ms-1"></i>
-                    </button>
-                    <ul
-                      class="programa-estudio mt-2 small text-muted d-none mb-0 ps-3"
-                    >
-                      <li>Unidad 1: Expresión Corporal</li>
-                      <li>Unidad 2: Estructura del Discurso</li>
-                      <li>Unidad 3: Manejo del Miedo Escénico</li>
-                    </ul>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section id="notas" class="col-12 col-md-6">
-              <div
-                class="card border-0 border-start border-success border-4 shadow-sm rounded-4 p-4 h-100 bg-white"
-              >
-                <h2 class="h5 fw-bold mb-3 text-success">
-                  <i class="fa-solid fa-graduation-cap me-2"></i> Notas y
-                  Libreta
-                </h2>
-                <p class="text-secondary small mb-3">
-                  Calificaciones oficiales cargadas por el cuerpo docente de la
-                  Escuela Normal.
-                </p>
-
-                <div class="table-responsive mb-4">
-                  <table
-                    class="table table-bordered table-striped text-center align-middle small mb-0"
-                  >
-                    <thead class="table-success">
-                      <tr>
-                        <th class="text-start">Materia</th>
-                        <th>1° Trim</th>
-                        <th>2° Trim</th>
-                        <th>3° Trim</th>
-                        <th>Final</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Matemáticas
-                        </td>
-                        <td>8</td>
-                        <td>7</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                       <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Fisica
-                        </td>
-                        <td>4</td>
-                        <td>2</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Literatura
-                        </td>
-                        <td>9</td>
-                        <td>9</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Inglés
-                        </td>
-                        <td>10</td>
-                        <td>9</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                      <tr>
-                        <td class="fw-bold text-start text-secondary">
-                          Oratoria
-                        </td>
-                        <td>10</td>
-                        <td>10</td>
-                        <td>-</td>
-                        <td>-</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-
-                <button
-                  id="btn-imprimir-notas"
-                  class="btn btn-outline-success w-100 mb-4 d-print-none"
-                >
-                  <i class="fa-solid fa-print me-2"></i> Imprimir Boletín
-                </button>
-
-                <div class="bg-light p-3 rounded-3 border mt-auto d-print-none">
-                  <h6 class="fw-bold mb-3">Simulador de Promedio Final</h6>
-                  <div class="d-flex gap-2 mb-3">
-                    <input
-                      type="number"
-                      id="nota1"
-                      class="form-control"
-                      placeholder="Trim 1"
-                      min="1"
-                      max="10"
-                    />
-                    <input
-                      type="number"
-                      id="nota2"
-                      class="form-control"
-                      placeholder="Trim 2"
-                      min="1"
-                      max="10"
-                    />
-                    <input
-                      type="number"
-                      id="nota3"
-                      class="form-control"
-                      placeholder="Trim 3"
-                      min="1"
-                      max="10"
-                    />
+            <!-- SECCIÓN: NOTAS -->
+            <section id="notas" class="col-12 seccion-oculta">
+              <div class="row g-4">
+                <div class="col-12 col-lg-8">
+                  <div class="card card-custom p-4 h-100">
+                    <h2 class="h5 fw-bold text-dark mb-4 border-bottom pb-2">
+                      <i class="fa-solid fa-graduation-cap text-primary me-2"></i> Boletín de Calificaciones
+                    </h2>
+                    <div class="table-responsive">
+                      <table class="table table-hover align-middle text-center mb-0">
+                        <thead class="table-light">
+                          <tr>
+                            <th class="text-start rounded-start">Materia</th>
+                            <th>1° Trim</th>
+                            <th>2° Trim</th>
+                            <th>3° Trim</th>
+                            <th class="rounded-end">Final</th>
+                          </tr>
+                        </thead>
+                        <tbody class="border-top-0">
+                          <tr>
+                            <td class="text-start fw-semibold text-secondary">Programación IV</td>
+                            <td>8</td><td>7</td><td>-</td><td>-</td>
+                          </tr>
+                          <tr>
+                            <td class="text-start fw-semibold text-secondary">Gestión de desarrollo</td>
+                            <td>9</td><td>9</td><td>-</td><td>-</td>
+                          </tr>
+                          <tr>
+                            <td class="text-start fw-semibold text-secondary">Metodología de Sistemas II</td>
+                            <td>7</td><td>8</td><td>-</td><td>-</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <button id="btn-imprimir-notas" class="btn btn-outline-primary mt-4 w-100 w-md-auto ms-auto d-block d-print-none rounded-pill">
+                      <i class="fa-solid fa-print me-2"></i> Imprimir Boletín
+                    </button>
                   </div>
-                  <button id="btn-calcular" class="btn btn-success w-100">
-                    Calcular Promedio
-                  </button>
-                  <p
-                    id="resultado-promedio"
-                    class="mt-3 mb-0 fs-5 text-center"
-                  ></p>
+                </div>
+                
+                <div class="col-12 col-lg-4 d-print-none">
+                  <div class="card card-custom bg-primary-subtle border-0 p-4 h-100">
+                    <h6 class="fw-bold text-primary mb-3">Simulador de Promedio</h6>
+                    <p class="small text-muted mb-4">Calcula cuánto necesitas para aprobar.</p>
+                    <div class="d-flex gap-2 mb-3">
+                      <input type="number" id="nota1" class="form-control border-0 shadow-sm" placeholder="T1" min="1" max="10" />
+                      <input type="number" id="nota2" class="form-control border-0 shadow-sm" placeholder="T2" min="1" max="10" />
+                      <input type="number" id="nota3" class="form-control border-0 shadow-sm" placeholder="T3" min="1" max="10" />
+                    </div>
+                    <button id="btn-calcular" class="btn btn-primary w-100 rounded-pill shadow-sm">Calcular</button>
+                    <div id="resultado-promedio" class="mt-4 text-center"></div>
+                  </div>
                 </div>
               </div>
             </section>
 
-            <section id="horarios" class="col-12">
-              <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
-                <h2 class="h5 fw-bold text-primary mb-3">
-                  <i class="fa-solid fa-clock me-2"></i> Horarios de Clase
+            <!-- SECCIÓN: HORARIOS (Diseño de la imagen) -->
+            <section id="horarios" class="col-12 seccion-oculta">
+              <div class="card card-custom p-4 h-100">
+                <h2 class="h5 fw-bold text-dark mb-4 border-bottom pb-2">
+                  <i class="fa-solid fa-clock text-primary me-2"></i> Horarios de Clase
                 </h2>
-
+                
                 <div class="table-responsive">
-                  <table
-                    class="table table-bordered table-striped text-center align-middle small mb-0"
-                  >
-                    <thead class="table-primary">
+                  <table class="table table-bordered text-center align-middle small mb-0 tabla-horarios">
+                    <thead>
                       <tr>
-                        <th>Hora</th>
-                        <th>Lunes</th>
-                        <th>Martes</th>
-                        <th>Miércoles</th>
-                        <th>Jueves</th>
-                        <th>Viernes</th>
+                        <th colspan="6" class="bg-cabecera-amarilla text-dark py-2 border-dark text-uppercase fw-bold" style="font-size: 0.85rem;">
+                          2° Año - Turno Tarde - 2° Cuatrimestre - Casa Central - C4
+                        </th>
+                      </tr>
+                      <tr class="bg-light">
+                        <th class="py-2 border-dark">Horas</th>
+                        <th class="py-2 border-dark">Lunes</th>
+                        <th class="py-2 border-dark">Martes</th>
+                        <th class="py-2 border-dark">Miércoles</th>
+                        <th class="py-2 border-dark">Jueves</th>
+                        <th class="py-2 border-dark">Viernes</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class="fw-bold text-secondary">14:00 - 15:20</td>
-                        <td>Matemáticas</td>
-                        <td>Física</td>
-                        <td>Matemáticas</td>
-                        <td>Inglés</td>
-                        <td>Oratoria</td>
+                        <td class="fw-bold text-dark border-dark align-middle">14:00 a<br>14:40</td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
                       </tr>
                       <tr>
-                        <td class="fw-bold text-secondary">15:20 - 15:40</td>
-                        <td colspan="5" class="table-warning fw-bold text-dark">
-                          RECREO GENERAL
-                        </td>
+                        <td class="fw-bold text-dark border-dark align-middle">14:40 a<br>15:20</td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
                       </tr>
                       <tr>
-                        <td class="fw-bold text-secondary">15:40 - 17:00</td>
-                        <td>Literatura</td>
-                        <td>Matemáticas</td>
-                        <td>Inglés</td>
-                        <td>Oratoria</td>
-                        <td>Inglés</td>
+                        <td class="fw-bold text-dark border-dark align-middle">15:20 a<br>16:00</td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">Ing. Moreno, Javier</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
+                        <td class="bg-materia-verde border-dark">Programación IV<br><small class="text-muted">TUP Costilla, Georgina</small></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold text-dark border-dark align-middle">16:00 a<br>16:40</td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-amarillo border-dark">Legislación<br><small class="text-muted">Dra. Juarez, Ma. Laura</small></td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-rosa border-dark">Introducción al análisis<br>de Datos<br><small class="text-muted">Ing. Trevisan, Gabriel</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold text-dark border-dark align-middle">16:40 a<br>17:20</td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-amarillo border-dark">Legislación<br><small class="text-muted">Dra. Juarez, Ma. Laura</small></td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-rosa border-dark">Introducción al análisis<br>de Datos<br><small class="text-muted">Ing. Trevisan, Gabriel</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
+                      </tr>
+                      <tr>
+                        <td class="fw-bold text-dark border-dark align-middle">17:20 a<br>18:00</td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-amarillo border-dark">Legislación<br><small class="text-muted">Dra. Juarez, Ma. Laura</small></td>
+                        <td class="bg-materia-naranja border-dark">Gestión de desarrollo de<br>Software<br><small class="text-muted">Ing. Ayunta, Irene</small></td>
+                        <td class="bg-materia-rosa border-dark">Introducción al análisis<br>de Datos<br><small class="text-muted">Ing. Trevisan, Gabriel</small></td>
+                        <td class="bg-materia-lila border-dark">Metodología de<br>Sistemas II<br><small class="text-muted">Ing. Estrada, Cynthia</small></td>
                       </tr>
                     </tbody>
                   </table>
@@ -585,32 +314,6 @@
             </section>
           </div>
         </div>
-
-        <footer class="mt-auto bg-dark text-white p-4 text-center mt-4">
-          <div
-            class="d-flex flex-column flex-sm-row flex-wrap justify-content-center align-items-center gap-3 gap-md-4 mb-4 small"
-          >
-            <a
-              href="mailto:contacto@escuelanormal.edu.ar"
-              class="text-decoration-none text-white-50"
-            >
-              <i class="fa-solid fa-envelope text-primary me-1"></i>
-              <strong>Email:</strong> contacto@escuelanormal.edu.ar
-            </a>
-            <span class="d-none d-sm-inline text-white-50"> | </span>
-            <a
-              href="tel:+543814509999"
-              class="text-decoration-none text-white-50"
-            >
-              <i class="fa-solid fa-phone text-primary me-1"></i>
-              <strong>Administración:</strong> (0381) 450-9999
-            </a>
-          </div>
-          <p class="mb-0 small text-white-50">
-            &copy; 2026 Escuela Normal. Plataforma desarrollada por el Grupo 8
-            (Nicolas, Lucca, Abel, Ramiro).
-          </p>
-        </footer>
       </main>
     </div>
 

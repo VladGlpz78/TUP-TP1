@@ -1,163 +1,128 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const enlacesMenu = document.querySelectorAll('.nav-link'); 
+    // 1. Navegación tipo SPA (Single Page Application)
+    const enlacesMenu = document.querySelectorAll('.nav-link-custom'); 
     const todasLasSecciones = document.querySelectorAll('main section');
-
-    todasLasSecciones.forEach(seccion => {
-        if(seccion.id !== 'inicio') seccion.style.display = 'none';
-    });
 
     enlacesMenu.forEach(enlace => {
         enlace.addEventListener('click', function(evento) {
             evento.preventDefault();
-            todasLasSecciones.forEach(seccion => seccion.style.display = 'none');
+            
+            // Cambiar clase activa en los botones del menú
+            enlacesMenu.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+
+            // Ocultar todas las secciones
+            todasLasSecciones.forEach(seccion => {
+                seccion.classList.remove('seccion-activa');
+                seccion.classList.add('seccion-oculta');
+            });
+
+            // Mostrar la sección correspondiente
             const idDestino = this.getAttribute('href'); 
             const seccionAMostrar = document.querySelector(idDestino);
-            if (seccionAMostrar) seccionAMostrar.style.display = 'block';
-            if (idDestino === '#asistencias') animarAsistencias();
+            if (seccionAMostrar) {
+                seccionAMostrar.classList.remove('seccion-oculta');
+                seccionAMostrar.classList.add('seccion-activa');
+            }
         });
     });
 
+    // 2. Simulador de Promedio Final
     const btnCalcular = document.getElementById('btn-calcular');
-    const nota1 = document.getElementById('nota1');
-    const nota2 = document.getElementById('nota2');
-    const nota3 = document.getElementById('nota3');
     const resultadoTexto = document.getElementById('resultado-promedio');
 
-    btnCalcular.addEventListener('click', () => {
-        const n1 = parseFloat(nota1.value);
-        const n2 = parseFloat(nota2.value);
-        const n3 = parseFloat(nota3.value);
+    if (btnCalcular) {
+        btnCalcular.addEventListener('click', () => {
+            const n1 = parseFloat(document.getElementById('nota1').value);
+            const n2 = parseFloat(document.getElementById('nota2').value);
+            const n3 = parseFloat(document.getElementById('nota3').value);
 
-        if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
-            resultadoTexto.textContent = "⚠️ Por favor, ingresa las 3 notas.";
-            resultadoTexto.className = "mt-3 mb-0 fs-5 text-center text-warning fw-bold";
-            return;
-        }
+            if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+                resultadoTexto.innerHTML = `<span class="badge bg-warning text-dark px-3 py-2 fs-6">⚠️ Por favor, ingresa las 3 notas</span>`;
+                return;
+            }
 
-        const promedio = ((n1 + n2 + n3) / 3).toFixed(2);
-
-        if (promedio >= 6) {
-            resultadoTexto.textContent = `¡Aprobado! Tu promedio es ${promedio}`;
-            resultadoTexto.className = "mt-3 mb-0 fs-5 text-center text-success fw-bold";
-        } else {
-            resultadoTexto.textContent = `Desaprobado. Tu promedio es ${promedio}`;
-            resultadoTexto.className = "mt-3 mb-0 fs-5 text-center text-danger fw-bold";
-        }
-    });
-
-    function animarAsistencias() {
-        const barra = document.getElementById('barra-asistencia');
-        const texto = document.getElementById('texto-porcentaje');
-        
-        barra.style.width = '0%';
-        texto.textContent = '0%';
-
-        const objetivo = barra.getAttribute('data-target');
-
-        setTimeout(() => {
-            barra.style.width = `${objetivo}%`;
-            barra.style.transition = "width 1.5s ease-in-out";
-            texto.textContent = `${objetivo}%`;
-        }, 100);
+            const promedio = ((n1 + n2 + n3) / 3).toFixed(2);
+            if (promedio >= 6) {
+                resultadoTexto.innerHTML = `<span class="badge bg-success px-3 py-2 fs-6">¡Aprobado! Promedio: ${promedio}</span>`;
+            } else {
+                resultadoTexto.innerHTML = `<span class="badge bg-danger px-3 py-2 fs-6">Desaprobado. Promedio: ${promedio}</span>`;
+            }
+        });
     }
-});
 
-const btnCerrarSesion = document.getElementById('btn-cerrar-sesion');
-
-if (btnCerrarSesion) {
-    btnCerrarSesion.addEventListener('click', function(evento) {
-        evento.preventDefault();
-        
-        const confirmacion = confirm("¿Estás seguro que deseas cerrar sesión?");
-        
-        if (confirmacion) {
-            alert("¡Sesión cerrada con éxito! Nos vemos pronto.");
+    // 3. Botón de reiniciar vista
+    const btnCerrarSesion = document.getElementById('btn-cerrar-sesion');
+    if (btnCerrarSesion) {
+        btnCerrarSesion.addEventListener('click', (evento) => {
+            evento.preventDefault();
             window.location.reload();
-        }
-    });
-}
+        });
+    }
 
-const btnImprimirNotas = document.getElementById('btn-imprimir-notas');
-    
+    // 4. Imprimir boletín
+    const btnImprimirNotas = document.getElementById('btn-imprimir-notas');
     if (btnImprimirNotas) {
-        btnImprimirNotas.addEventListener('click', () => {
-            window.print();
+        btnImprimirNotas.addEventListener('click', () => window.print());
+    }
+
+    // 5. Buscador de materias en tiempo real
+    const buscador = document.getElementById('buscador-materias');
+    const itemsMateria = document.querySelectorAll('.materia-item');
+
+    if (buscador) {
+        buscador.addEventListener('input', (e) => {
+            const texto = e.target.value.toLowerCase();
+            itemsMateria.forEach(item => {
+                const titulo = item.querySelector('.titulo-materia').textContent.toLowerCase();
+                item.style.display = titulo.includes(texto) ? 'block' : 'none';
+            });
         });
     }
 
-const buscador = document.getElementById('buscador-materias');
-const itemsMateria = document.querySelectorAll('.materia-item');
+    // 6. Cálculo dinámico de la próxima clase
+    function calcularProximaClase() {
+        const textoProximaClase = document.getElementById('texto-proxima-clase');
+        if (!textoProximaClase) return;
 
-if (buscador) {
-    buscador.addEventListener('input', (e) => {
-        const texto = e.target.value.toLowerCase();
-        itemsMateria.forEach(item => {
-            const titulo = item.querySelector('.titulo-materia').textContent.toLowerCase();
-            item.style.display = titulo.includes(texto) ? 'block' : 'none';
-        });
-    });
-}
-
-function animarProgresoMaterias() {
-    const barras = document.querySelectorAll('.progress-materia');
-    barras.forEach(barra => {
-        const objetivo = barra.getAttribute('data-target');
-        const porcentajeTexto = barra.parentElement.previousElementSibling.querySelector('.porcentaje-materia');
+        const ahora = new Date();
+        const diaSemana = ahora.getDay(); 
+        const horaActual = ahora.getHours();
+        const minActual = ahora.getMinutes();
+        const tiempoActual = horaActual + (minActual / 60);
         
-        barra.style.width = '0%';
-        if(porcentajeTexto) porcentajeTexto.textContent = '0%';
+        const grillaHorarios = [
+            { dia: 1, inicio: 14.0, materia: "Programación IV", profe: "TUP Costilla, Georgina" },
+            { dia: 1, inicio: 16.0, materia: "Gestión de desarrollo de Software", profe: "Ing. Ayunta, Irene" },
+            { dia: 2, inicio: 14.0, materia: "Programación IV", profe: "Ing. Moreno, Javier" },
+            { dia: 2, inicio: 16.0, materia: "Legislación", profe: "Dra. Juarez, Ma. Laura" },
+            { dia: 3, inicio: 14.0, materia: "Programación IV", profe: "Ing. Moreno, Javier" },
+            { dia: 3, inicio: 16.0, materia: "Gestión de desarrollo de Software", profe: "Ing. Ayunta, Irene" },
+            { dia: 4, inicio: 14.0, materia: "Metodología de Sistemas II", profe: "Ing. Estrada, Cynthia" },
+            { dia: 4, inicio: 16.0, materia: "Introducción al análisis de Datos", profe: "Ing. Trevisan, Gabriel" },
+            { dia: 5, inicio: 14.0, materia: "Programación IV", profe: "TUP Costilla, Georgina" },
+            { dia: 5, inicio: 16.0, materia: "Metodología de Sistemas II", profe: "Ing. Estrada, Cynthia" }
+        ];
 
-        setTimeout(() => {
-            barra.style.width = `${objetivo}%`;
-            barra.style.transition = "width 1s ease-in-out";
-            if(porcentajeTexto) porcentajeTexto.textContent = `${objetivo}%`;
-        }, 150);
-    });
-}
+        const clasesDeHoy = grillaHorarios.filter(clase => clase.dia === diaSemana && clase.inicio >= tiempoActual);
+        clasesDeHoy.sort((a, b) => a.inicio - b.inicio);
 
-const btnsPrograma = document.querySelectorAll('.btn-programa');
-btnsPrograma.forEach(btn => {
-    btn.addEventListener('click', function() {
-        const listaPrograma = this.nextElementSibling;
-        listaPrograma.classList.toggle('d-none'); 
-    });
+        if (diaSemana === 0 || diaSemana === 6) {
+            textoProximaClase.innerHTML = '<i class="fa-solid fa-mug-hot me-2"></i> ¡Es fin de semana! No tienes clases programadas.';
+            textoProximaClase.className = "alert alert-success border-0 shadow-sm mb-0";
+        } else if (clasesDeHoy.length > 0) {
+            const proxima = clasesDeHoy[0];
+            const horaStr = Math.floor(proxima.inicio);
+            const minStr = Math.round((proxima.inicio - horaStr) * 60).toString().padStart(2, '0');
+            
+            textoProximaClase.innerHTML = `<i class="fa-solid fa-circle-info me-2"></i> Próxima clase: <strong>${proxima.materia}</strong> (${proxima.profe}) a las <strong>${horaStr}:${minStr}</strong> hs.`;
+            textoProximaClase.className = "alert alert-primary border-0 shadow-sm mb-0 bg-primary-subtle text-primary";
+        } else {
+            textoProximaClase.innerHTML = '<i class="fa-solid fa-check-double me-2"></i> ¡Jornada finalizada! Ya no tienes más clases por hoy.';
+            textoProximaClase.className = "alert alert-success border-0 shadow-sm mb-0";
+        }
+    }
+
+    calcularProximaClase();
+    setInterval(calcularProximaClase, 60000);
 });
-
-
-function calcularProximaClase() {
-    const textoProximaClase = document.getElementById('texto-proxima-clase');
-    if (!textoProximaClase) return;
-
-    const ahora = new Date();
-    const diaSemana = ahora.getDay(); 
-    const horaActual = ahora.getHours();
-    const minActual = ahora.getMinutes();
-    const tiempoActual = horaActual + (minActual / 60);
-    const grillaHorarios = [
-        { dia: 1, inicio: 14.0, materia: "Matemáticas", profe: "Prof. Martínez", aula: "Aula 1" },
-        { dia: 1, inicio: 15.66, materia: "Literatura", profe: "Prof. García", aula: "Aula 2" },
-        { dia: 4, inicio: 14.0, materia: "Inglés", profe: "Prof. Smith", aula: "Laboratorio de Idiomas" }, 
-        { dia: 4, inicio: 15.66, materia: "Oratoria", profe: "Prof. Gópez", aula: "Aula 3" }, 
-        { dia: 5, inicio: 14.0, materia: "Oratoria", profe: "Prof. Gómez", aula: "Salón de Actos" }
-    ];
-
-    const clasesDeHoy = grillaHorarios.filter(clase => clase.dia === diaSemana && clase.inicio >= tiempoActual);
-    clasesDeHoy.sort((a, b) => a.inicio - b.inicio);
-    if (diaSemana === 0 || diaSemana === 6) {
-        textoProximaClase.innerHTML = "¡Es fin de semana! No tienes clases programadas. ";
-        textoProximaClase.className = "mb-0 small text-success fw-bold";
-    } else if (clasesDeHoy.length > 0) {
-        const proxima = clasesDeHoy[0];
-        const horaStr = Math.floor(proxima.inicio);
-        const minStr = Math.round((proxima.inicio - horaStr) * 60).toString().padStart(2, '0');
-        
-        textoProximaClase.innerHTML = `Tu próxima clase es <strong>${proxima.materia}</strong> (${proxima.profe}) a las <strong>${horaStr}:${minStr}</strong> en el <strong>${proxima.aula}</strong>.`;
-        textoProximaClase.className = "mb-0 small text-dark";
-    } else {
-        textoProximaClase.innerHTML = "¡Terminaste tu jornada! Ya no tienes más clases por hoy. ";
-        textoProximaClase.className = "mb-0 small text-success fw-bold";
-    }
-}
-
-calcularProximaClase();
-setInterval(calcularProximaClase, 60000);
