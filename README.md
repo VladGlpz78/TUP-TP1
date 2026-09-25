@@ -1,6 +1,6 @@
-# 🎓 Portal Académico - Web Responsive
+# 🎓 Portal Académico - Sistema Web Interactivo
 
-Un portal web institucional dinámico y adaptable diseñado para ofrecer una interfaz moderna, limpia y optimizada. El proyecto demuestra buenas prácticas de maquetación estructurada, diseño adaptativo y optimización para motores de búsqueda (SEO).
+Una aplicación web interactiva diseñada para la gestión y consulta académica de los estudiantes. El sistema incluye navegación fluida tipo SPA, cálculo dinámico de horarios de cursada en tiempo real, buscador interactivo de materias y simulador de promedio final.
 
 ---
 
@@ -13,33 +13,46 @@ Un portal web institucional dinámico y adaptable diseñado para ofrecer una int
 
 ---
 
-## Descripción del Proyecto
+## 🚀 Funcionalidades Principales
 
-Este proyecto consiste en el desarrollo de la interfaz de un **Portal Académico**, enfocado en la experiencia de usuario (UX/UI) y en un diseño plenamente adaptable (*responsive design*). 
+El archivo JavaScript principal integra lógica en el cliente para ofrecer una experiencia rápida y sin recargas de página:
 
-**Objetivos principales:**
-* Aplicar estándares de maquetación web accesible.
-* Implementar un diseño adaptable que responda eficientemente a múltiples dispositivos.
-* Gestión y control de versiones colaborativo utilizando Git y GitHub.
+* 📱 **Navegación tipo SPA (Single Page Application):** Cambio dinámico entre secciones ocultando y mostrando bloques sin recargar la página web.
+* 🕒 **Calculador Dinámico de Próxima Clase:** Monitorea la hora y el día actual para informarle al alumno cuál es su próxima clase programada, si la jornada ya finalizó o si es fin de semana.
+* 🔍 **Buscador de Materias en Tiempo Real:** Filtra interactivamente el catálogo de asignaturas a medida que el usuario escribe en el campo de búsqueda.
+* 📊 **Simulador de Promedio Final:** Permite ingresar 3 notas parciales y calcula instantáneamente el estado de aprobación (Aprobado / Desaprobado) con alertas de validación.
+* 🖨️ **Generador / Impresor de Boletín:** Integración directa con la ventana de impresión del navegador (`window.print()`).
+* 🔄 **Reinicio de Vista / Cierre de Sesión:** Restablece la aplicación al estado inicial.
 
 ---
 
 ## 🛠️ Tecnologías Utilizadas
 
-* **HTML5:** Estructuración semántica del contenido.
-* **CSS3 & Bootstrap:** Estilos visuales, distribución responsiva y componentes modernos.
-* **Git & GitHub:** Control de versiones y trabajo colaborativo.
+* **HTML5:** Estructuración semántica y modular.
+* **CSS3 & Bootstrap 5:** Estilos responsivos, componentes de alerta y badges.
+* **JavaScript (ES6+):** Manipulación del DOM, eventos dinámicos, cálculo de fechas y lógica interactiva.
+* **FontAwesome:** Iconografía vectorial interactiva.
+* **Git & GitHub:** Control de versiones colaborativo.
 
 ---
 
-## 🔍 Estrategias SEO y Buenas Prácticas
+## 💻 Detalles Técnicos del Script
 
-Para optimizar el posicionamiento en motores de búsqueda y garantizar la accesibilidad web, se implementaron las siguientes estrategias:
+| Módulo JS | Función / Evento | Descripción |
+| :--- | :--- | :--- |
+| **Navegación** | `DOMContentLoaded` / `click` | Alterna clases CSS (`.seccion-activa` / `.seccion-oculta`) según el atributo `href` seleccionado. |
+| **Simulador** | `click` en `#btn-calcular` | Obtiene notas, valida entradas numéricas (`isNaN`) y calcula el promedio ponderado. |
+| **Buscador** | `input` en `#buscador-materias` | Aplica `.includes()` sobre los nombres de las materias para ajustar su visibilidad (`display`). |
+| **Reloj de Clases** | `calcularProximaClase()` | Recorre la matriz de horarios filtrando por el objeto `Date()` y se actualiza cada 60 segundos (`setInterval`). |
 
-| Estrategia | Descripción |
-| :--- | :--- |
-| **Etiquetas Meta & Título** | Inclusión de `<meta name="description">` y `<title>` descriptivos en el `<head>` para mejorar la presentación en los resultados de búsqueda de Google. |
-| **HTML Semántico** | Uso de etiquetas de estructura (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`) que definen la jerarquía lógica del contenido. |
-| **Jerarquía de Encabezados** | Definición de un único `<h1>` principal y uso ordenado de `<h2>` para facilitar el escaneo tanto para los usuarios como para los bots de búsqueda. |
-| **Atributos ALT en Imágenes** | Inclusión de descripciones contextuales en imágenes (p. ej., fachada institucional), clave para indexación y lectores de pantalla. |
-| **Diseño Responsive** | Configuración del viewport (`<meta name="viewport">`) combinada con utilidades de Bootstrap y Media Queries para una visualización óptima en móviles, tablets y escritorios. |
+---
+
+## 📅 Estructura de Horarios Cargada
+
+La aplicación evalúa dinámicamente la grilla horaria semanal:
+
+* **Lunes:** Programación IV (14:00 hs) | Gestión de Desarrollo de SW (16:00 hs)
+* **Martes:** Programación IV (14:00 hs) | Legislación (16:00 hs)
+* **Miércoles:** Programación IV (14:00 hs) | Gestión de Desarrollo de SW (16:00 hs)
+* **Jueves:** Metodología de Sistemas II (14:00 hs) | Introducción al Análisis de Datos (16:00 hs)
+* **Viernes:** Programación IV (14:00 hs) | Metodología de Sistemas II (16:00 hs)
