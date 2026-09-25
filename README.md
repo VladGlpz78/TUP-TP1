@@ -1,27 +1,58 @@
-## Integrantes
+# 🎓 Portal Académico - Sistema Web Interactivo
 
-* Abel Carrera
-* Ramiro Martin
-* Lucca Lazarte
-* Nicolas Gonzalez
+Una aplicación web interactiva diseñada para la gestión y consulta académica de los estudiantes. El sistema incluye navegación fluida tipo SPA, cálculo dinámico de horarios de cursada en tiempo real, buscador interactivo de materias y simulador de promedio final.
 
-## Descripción breve
+---
 
-Este proyecto consiste en el desarrollo de un sitio web de un portal academico con secciones dinámicas y diseño adaptable. El objetivo fue aplicar conceptos de maquetado de HTML, css y manejo de GitHub para crear una interfaz moderna y responsiva.
+## 👥 Integrantes
 
-## Tecnologías utilizadas
+* **Abel Carrera**
+* **Ramiro Martín**
+* **Lucca Lazarte**
+* **Nicolás González**
 
-* HTML5
-* CSS
-* GitHub para control de versiones
+---
 
-## Estrategias SEO implementadas
-* Etiquetas Meta y Título: Se incorporó la etiqueta meta name="description" en el head para indicarle a Google de qué trata la página, actuando como el resumen que aparece en los resultados de búsqueda, complementado con una etiqueta title clara.
+## 🚀 Funcionalidades Principales
 
-* Atributo ALT en imágenes: Se utilizó el atributo alt en la imagen de la fachada. Los buscadores leen este texto para saber qué muestra la foto, lo cual también es clave para la accesibilidad web.
+El archivo JavaScript principal integra lógica en el cliente para ofrecer una experiencia rápida y sin recargas de página:
 
-* HTML Semántico: Se estructuró el documento utilizando etiquetas como header, nav, main, section y footer. Esta organización le explica al buscador cuál es la jerarquía y estructura lógica de la información.
+* 📱 **Navegación tipo SPA (Single Page Application):** Cambio dinámico entre secciones ocultando y mostrando bloques sin recargar la página web.
+* 🕒 **Calculador Dinámico de Próxima Clase:** Monitorea la hora y el día actual para informarle al alumno cuál es su próxima clase programada, si la jornada ya finalizó o si es fin de semana.
+* 🔍 **Buscador de Materias en Tiempo Real:** Filtra interactivamente el catálogo de asignaturas a medida que el usuario escribe en el campo de búsqueda.
+* 📊 **Simulador de Promedio Final:** Permite ingresar 3 notas parciales y calcula instantáneamente el estado de aprobación (Aprobado / Desaprobado) con alertas de validación.
+* 🖨️ **Generador / Impresor de Boletín:** Integración directa con la ventana de impresión del navegador (`window.print()`).
+* 🔄 **Reinicio de Vista / Cierre de Sesión:** Restablece la aplicación al estado inicial.
 
-* Jerarquía de Encabezados: Se empleó un único h1 para el título principal de la página y se organizó el resto del contenido de forma ordenada con subtítulos h2. Esto facilita la lectura tanto para el usuario como para el motor de búsqueda.
+---
 
-* Diseño Responsive (Adaptable a móviles): Mediante el uso de meta name="viewport" y la posterior aplicación de Media Queries en CSS, el sitio está preparado para verse correctamente en celulares, tablets y computadoras. En la actualidad, Google prioriza y posiciona mejor a los sitios que son amigables con dispositivos móviles. (Se comentó el codigo con css puro, se reemplazó con bootstrap)
+## 🛠️ Tecnologías Utilizadas
+
+* **HTML5:** Estructuración semántica y modular.
+* **CSS3 & Bootstrap 5:** Estilos responsivos, componentes de alerta y badges.
+* **JavaScript (ES6+):** Manipulación del DOM, eventos dinámicos, cálculo de fechas y lógica interactiva.
+* **FontAwesome:** Iconografía vectorial interactiva.
+* **Git & GitHub:** Control de versiones colaborativo.
+
+---
+
+## 💻 Detalles Técnicos del Script
+
+| Módulo JS | Función / Evento | Descripción |
+| :--- | :--- | :--- |
+| **Navegación** | `DOMContentLoaded` / `click` | Alterna clases CSS (`.seccion-activa` / `.seccion-oculta`) según el atributo `href` seleccionado. |
+| **Simulador** | `click` en `#btn-calcular` | Obtiene notas, valida entradas numéricas (`isNaN`) y calcula el promedio ponderado. |
+| **Buscador** | `input` en `#buscador-materias` | Aplica `.includes()` sobre los nombres de las materias para ajustar su visibilidad (`display`). |
+| **Reloj de Clases** | `calcularProximaClase()` | Recorre la matriz de horarios filtrando por el objeto `Date()` y se actualiza cada 60 segundos (`setInterval`). |
+
+---
+
+## 📅 Estructura de Horarios Cargada
+
+La aplicación evalúa dinámicamente la grilla horaria semanal:
+
+* **Lunes:** Programación IV (14:00 hs) | Gestión de Desarrollo de SW (16:00 hs)
+* **Martes:** Programación IV (14:00 hs) | Legislación (16:00 hs)
+* **Miércoles:** Programación IV (14:00 hs) | Gestión de Desarrollo de SW (16:00 hs)
+* **Jueves:** Metodología de Sistemas II (14:00 hs) | Introducción al Análisis de Datos (16:00 hs)
+* **Viernes:** Programación IV (14:00 hs) | Metodología de Sistemas II (16:00 hs)
