@@ -125,4 +125,98 @@ document.addEventListener("DOMContentLoaded", () => {
 
     calcularProximaClase();
     setInterval(calcularProximaClase, 60000);
+
+    // 7. Carrusel automático de imágenes en el Inicio
+    const contenedorCarrusel = document.querySelector('.hero-carousel');
+    if (contenedorCarrusel) {
+        const slides = contenedorCarrusel.querySelectorAll('img');
+        const contenedorDots = document.getElementById('hero-dots');
+        let indiceActual = 0;
+
+        // Crear los puntos indicadores dinámicamente
+        slides.forEach((_, i) => {
+            const punto = document.createElement('span');
+            if (i === 0) punto.classList.add('dot-activo');
+            punto.addEventListener('click', () => mostrarSlide(i));
+            contenedorDots.appendChild(punto);
+        });
+        const puntos = contenedorDots.querySelectorAll('span');
+
+        function mostrarSlide(indice) {
+            slides[indiceActual].classList.remove('slide-activa');
+            puntos[indiceActual].classList.remove('dot-activo');
+
+            indiceActual = indice;
+
+            slides[indiceActual].classList.add('slide-activa');
+            puntos[indiceActual].classList.add('dot-activo');
+        }
+
+        function siguienteSlide() {
+            const siguiente = (indiceActual + 1) % slides.length;
+            mostrarSlide(siguiente);
+        }
+
+        // Cambia de imagen automáticamente cada 4 segundos
+        setInterval(siguienteSlide, 4000);
+    }
+
+    // 8. Botón de Configuración: Tema oscuro
+    const toggleTema = document.getElementById('toggle-modo-oscuro');
+    if (toggleTema) {
+        toggleTema.addEventListener('click', (evento) => {
+            evento.preventDefault();
+            document.body.classList.toggle('tema-oscuro');
+            const activado = document.body.classList.contains('tema-oscuro');
+            toggleTema.innerHTML = activado
+                ? '<i class="fa-solid fa-sun me-2 text-primary"></i> Tema claro'
+                : '<i class="fa-solid fa-moon me-2 text-primary"></i> Tema oscuro';
+        });
+    }
+
+    // 9. Cerrar sesión desde el menú de Configuración
+    const btnCerrarSesionMenu = document.getElementById('btn-cerrar-sesion-menu');
+    if (btnCerrarSesionMenu) {
+        btnCerrarSesionMenu.addEventListener('click', (evento) => {
+            evento.preventDefault();
+            window.location.reload();
+        });
+    }
+
+    // 10. Formulario de cambio de contraseña (simulado en cliente)
+    const formPassword = document.getElementById('form-password');
+    if (formPassword) {
+        formPassword.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            const modalEl = document.getElementById('modalPassword');
+            const modalInstancia = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstancia) modalInstancia.hide();
+            formPassword.reset();
+        });
+    }
+
+    // 11. Formulario de Editar Perfil (simulado en cliente)
+    const formPerfil = document.getElementById('form-perfil');
+    if (formPerfil) {
+        formPerfil.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            const modalEl = document.getElementById('modalPerfil');
+            const modalInstancia = bootstrap.Modal.getInstance(modalEl);
+            if (modalInstancia) modalInstancia.hide();
+        });
+    }
+
+    // 12. Vista previa de la nueva foto de perfil
+    const inputFoto = document.getElementById('input-foto-perfil');
+    if (inputFoto) {
+        inputFoto.addEventListener('change', (evento) => {
+            const archivo = evento.target.files[0];
+            if (!archivo) return;
+            const lector = new FileReader();
+            lector.onload = (e) => {
+                document.querySelector('#modalPerfil img').src = e.target.result;
+            };
+            lector.readAsDataURL(archivo);
+        });
+    }
 });
