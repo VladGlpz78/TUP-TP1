@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Navegación tipo SPA (Single Page Application)
+    // 1. Navegación tipo SPA (adaptada a clases de Bootstrap)
     const enlacesMenu = document.querySelectorAll('.nav-link-custom'); 
     const todasLasSecciones = document.querySelectorAll('main section');
 
@@ -8,21 +8,23 @@ document.addEventListener("DOMContentLoaded", () => {
             evento.preventDefault();
             
             // Cambiar clase activa en los botones del menú
-            enlacesMenu.forEach(link => link.classList.remove('active'));
+            enlacesMenu.forEach(link => {
+                link.classList.remove('active');
+                link.classList.add('text-white-50');
+            });
             this.classList.add('active');
+            this.classList.remove('text-white-50');
 
-            // Ocultar todas las secciones
+            // Ocultar todas las secciones con la clase nativa d-none de Bootstrap
             todasLasSecciones.forEach(seccion => {
-                seccion.classList.remove('seccion-activa');
-                seccion.classList.add('seccion-oculta');
+                seccion.classList.add('d-none');
             });
 
             // Mostrar la sección correspondiente
             const idDestino = this.getAttribute('href'); 
             const seccionAMostrar = document.querySelector(idDestino);
             if (seccionAMostrar) {
-                seccionAMostrar.classList.remove('seccion-oculta');
-                seccionAMostrar.classList.add('seccion-activa');
+                seccionAMostrar.classList.remove('d-none');
             }
         });
     });
@@ -126,49 +128,17 @@ document.addEventListener("DOMContentLoaded", () => {
     calcularProximaClase();
     setInterval(calcularProximaClase, 60000);
 
-    // 7. Carrusel automático de imágenes en el Inicio
-    const contenedorCarrusel = document.querySelector('.hero-carousel');
-    if (contenedorCarrusel) {
-        const slides = contenedorCarrusel.querySelectorAll('img');
-        const contenedorDots = document.getElementById('hero-dots');
-        let indiceActual = 0;
-
-        // Crear los puntos indicadores dinámicamente
-        slides.forEach((_, i) => {
-            const punto = document.createElement('span');
-            if (i === 0) punto.classList.add('dot-activo');
-            punto.addEventListener('click', () => mostrarSlide(i));
-            contenedorDots.appendChild(punto);
-        });
-        const puntos = contenedorDots.querySelectorAll('span');
-
-        function mostrarSlide(indice) {
-            slides[indiceActual].classList.remove('slide-activa');
-            puntos[indiceActual].classList.remove('dot-activo');
-
-            indiceActual = indice;
-
-            slides[indiceActual].classList.add('slide-activa');
-            puntos[indiceActual].classList.add('dot-activo');
-        }
-
-        function siguienteSlide() {
-            const siguiente = (indiceActual + 1) % slides.length;
-            mostrarSlide(siguiente);
-        }
-
-        // Cambia de imagen automáticamente cada 4 segundos
-        setInterval(siguienteSlide, 4000);
-    }
-
-    // 8. Botón de Configuración: Tema oscuro
+    // 8. Botón de Configuración: Tema oscuro nativo con data-bs-theme de Bootstrap 5.3
     const toggleTema = document.getElementById('toggle-modo-oscuro');
     if (toggleTema) {
         toggleTema.addEventListener('click', (evento) => {
             evento.preventDefault();
-            document.body.classList.toggle('tema-oscuro');
-            const activado = document.body.classList.contains('tema-oscuro');
-            toggleTema.innerHTML = activado
+            const html = document.documentElement;
+            const esOscuro = html.getAttribute('data-bs-theme') === 'dark';
+            const nuevoTema = esOscuro ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', nuevoTema);
+
+            toggleTema.innerHTML = nuevoTema === 'dark'
                 ? '<i class="fa-solid fa-sun me-2 text-primary"></i> Tema claro'
                 : '<i class="fa-solid fa-moon me-2 text-primary"></i> Tema oscuro';
         });
@@ -183,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 10. Formulario de cambio de contraseña (simulado en cliente)
+    // 10. Formulario de cambio de contraseña
     const formPassword = document.getElementById('form-password');
     if (formPassword) {
         formPassword.addEventListener('submit', (evento) => {
@@ -195,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 11. Formulario de Editar Perfil (simulado en cliente)
+    // 11. Formulario de Editar Perfil
     const formPerfil = document.getElementById('form-perfil');
     if (formPerfil) {
         formPerfil.addEventListener('submit', (evento) => {
